@@ -101,8 +101,10 @@ public final class AppIconResizer {
                 // TODO: Print error
                 return
             }
+
             self?.render(device: device, fileName: fileName)
         }
+
         resizingCommand.run()
     }
 
@@ -110,19 +112,26 @@ public final class AppIconResizer {
         device.sizes
             .forEach { size in
                 let currentPath = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
-                let image = convertCIImageToCGImage(
-                    inputImage: CIImage(
-                        contentsOf: URL(fileURLWithPath: fileName, relativeTo: currentPath)
-                    )!
-                )?.resize(to: size)
-                let destination = CGImageDestinationCreateWithURL(
-                    URL(fileURLWithPath: "\(Int(size.height)).png", relativeTo: currentPath) as CFURL,
-                    kUTTypePNG,
-                    1,
-                    nil
-                )
-                CGImageDestinationAddImage(destination!, image!, nil)
-                CGImageDestinationFinalize(destination!)
+
+                guard let inputImage = CIImage(contentsOf: URL(fileURLWithPath: fileName, relativeTo: currentPath)) else {
+                    // TODO: Print error
+                    return
+                }
+
+                guard let image = convertCIImageToCGImage(inputImage: inputImage)?.resize(to: size) else {
+                    // TODO: Print error
+                    return
+                }
+
+                let url = URL(fileURLWithPath: "\(Int(size.height)).png", relativeTo: currentPath) as CFURL
+                
+                guard let destination = CGImageDestinationCreateWithURL(url,kUTTypePNG,1,nil) else {
+                    // TODO: Print error
+                    return
+                }
+
+                CGImageDestinationAddImage(destination, image, nil)
+                CGImageDestinationFinalize(destination)
                 print("Created AppIcon from \(fileName) in \(size)")
             }
     }
