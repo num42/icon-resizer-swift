@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "AppIconResizer",
+    products: [
+      .executable(name: "icon-resizer", targets: ["AppIconResizer"]),
+    ],
     dependencies: [
         .package(
             url: "https://github.com/JohnSundell/Files.git",
