@@ -87,7 +87,7 @@ public final class AppIconResizer {
     // Create one dimensional String array 'arguments'
     private let arguments: [String]
     
-    // Instanciate class by handing over the arguments
+    // Instantiate class by handing over the arguments
     public init(arguments: [String] = CommandLine.arguments) {
         self.arguments = arguments
     }
@@ -131,6 +131,7 @@ public final class AppIconResizer {
 
 func convertCIImageToCGImage(inputImage: CIImage) -> CGImage? {
     let context = CIContext(options: nil)
+    // TODO: make this a guard
     if let cgImage = context.createCGImage(inputImage, from: inputImage.extent) {
         return cgImage
     }
