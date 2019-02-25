@@ -146,16 +146,7 @@ func convertCIImageToCGImage(inputImage: CIImage) -> CGImage? {
 
 extension CGImage {
     func resize(to newSize: CGSize) -> CGImage? {
-        let inputImageHeight = CGFloat(self.height)
-
-        // Get ratio (landscape or portrait)
-        var ratio = newSize.height / inputImageHeight
-
-        // Calculate new size based on the ratio
-        if ratio > 1 {
-            ratio = 1
-        }
-        let height = newSize.height
+        let height = Int(newSize.height)
 
         guard let colorSpace = self.colorSpace else {
             return nil
@@ -163,8 +154,8 @@ extension CGImage {
 
         guard let context = CGContext(
             data: nil,
-            width: Int(height),
-            height: Int(height),
+            width: height,
+            height: height,
             bitsPerComponent: self.bitsPerComponent,
             bytesPerRow: self.bytesPerRow,
             space: colorSpace,
@@ -175,7 +166,7 @@ extension CGImage {
 
         // draw image to context (resizing it)
         context.interpolationQuality = .high
-        context.draw(self, in: CGRect(x: 0, y: 0, width: Int(height), height: Int(height)))
+        context.draw(self, in: CGRect(x: 0, y: 0, width: height, height: height))
 
         // extract resulting image from context
         return context.makeImage()
