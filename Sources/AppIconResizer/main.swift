@@ -4,5 +4,5 @@ let tool = AppIconResizer()
 do {
     try tool.run()
 } catch {
-    print ("Error occured: \(error)")
+    print("Error occured: \(error)")
 }
