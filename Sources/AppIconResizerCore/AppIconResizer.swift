@@ -99,7 +99,7 @@ public final class AppIconResizer {
             Argument<String>("filename")
         ) { [weak self] device, fileName in
             guard let device = Device(rawValue: device.lowercased()) else {
-                // TODO: Print error
+                print("Error! Invalid command!")
                 return
             }
             self?.render(device: device, fileName: fileName)
