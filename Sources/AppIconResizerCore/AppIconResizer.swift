@@ -118,14 +118,14 @@ public final class AppIconResizer {
                     return
                 }
 
-                guard let image = convertCIImageToCGImage(inputImage: inputImage)?.resize(to: size) else {
+                guard let image = inputImage.cgImage?.resize(to: size) else {
                     // TODO: Print error
                     return
                 }
 
                 let url = URL(fileURLWithPath: "\(Int(size.height)).png", relativeTo: currentPath) as CFURL
-                
-                guard let destination = CGImageDestinationCreateWithURL(url,kUTTypePNG,1,nil) else {
+
+                guard let destination = CGImageDestinationCreateWithURL(url, kUTTypePNG, 1, nil) else {
                     // TODO: Print error
                     return
                 }
@@ -142,15 +142,6 @@ public extension AppIconResizer {
         case missingFileName
         case failedToCreateFile
     }
-}
-
-func convertCIImageToCGImage(inputImage: CIImage) -> CGImage? {
-    let context = CIContext(options: nil)
-    // TODO: make this a guard
-    if let cgImage = context.createCGImage(inputImage, from: inputImage.extent) {
-        return cgImage
-    }
-    return nil
 }
 
 extension CGImage {
@@ -179,5 +170,16 @@ extension CGImage {
 
         // extract resulting image from context
         return context.makeImage()
+    }
+}
+
+extension CIImage {
+    var cgImage: CGImage? {
+        let context = CIContext(options: nil)
+        // TODO: make this a guard
+        if let cgImage = context.createCGImage(self, from: self.extent) {
+            return cgImage
+        }
+        return nil
     }
 }
