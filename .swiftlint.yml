@@ -1,0 +1,58 @@
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Resources/CodeGeneration
+  - Pods
+  - "${SRCROOT}/*/*/*/SwiftGen/*.swift"
+  - "${SRCROOT}/*/*/*/Sourcery/*.swift"
+  - "${SRCROOT}/fastlane/*.swift"
+
+disabled_rules: # rule identifiers to exclude from running
+  - function_body_length # rxswift results in longer functions
+  - switch_case_on_newline # convenient for easy mappings or small switch cases
+  - cyclomatic_complexity  # rxswift results in more complex functions
+  - force_try
+  - force_cast
+  - file_length
+  - type_body_length
+  - let_var_whitespace
+  - trailing_whitespace
+  - vertical_whitespace
+
+opt_in_rules:
+  - empty_count
+  - closure_end_indentation
+  - redundant_nil_coalescing
+  - compiler_protocol_init
+  - conditional_returns_on_newline
+  - operator_usage_whitespace
+  - vertical_parameter_alignment_on_call
+  - switch_case_on_newline
+  - unneeded_parentheses_in_closure_argument
+  - overridden_super_call
+  - first_where
+  - contains_over_first_not_nil
+  - superfluous_disable_command
+  - function_parameter_count
+  - explicit_init
+  - fatal_error_message
+  - object_literal
+  #- pattern_matching_keywords # The formatter corrects this back again
+  #- trailing_closure
+
+identifier_name:
+  excluded:
+    - id
+    - to
+
+line_length: 140
+
+nesting:
+  type_level:
+    warning: 3
+  statement_level:
+    warning: 10
+
+force_try: warning
+force_cast: warning
+
+object_literal:
+  color_literal: false

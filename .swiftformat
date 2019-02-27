@@ -1,0 +1,12 @@
+--exclude Pods,**/SwiftGen,**/Sourcery,fastlane
+--disable redundantSelf, unusedArguments, blankLinesBetweenScopes, blankLinesAroundMark
+--binarygrouping none
+--commas inline
+--decimalgrouping none
+--hexgrouping none
+--indent 2
+--octalgrouping none
+--patternlet inline
+--stripunusedargs closure-only
+--wraparguments beforefirst
+--wrapcollections beforefirst
