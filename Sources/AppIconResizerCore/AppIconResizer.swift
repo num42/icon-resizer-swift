@@ -19,7 +19,7 @@ public final class AppIconResizer {
             Argument<String>("filename")
         ) { [weak self] device, fileName in
             guard let device = Device(rawValue: device.lowercased()) else {
-                // TODO: Print error
+                print("Error: Entered device is not a valid device! Valid devices are \(Device.allCases.map { $0.rawValue }.joined(separator: ", "))")
                 return
             }
 
@@ -35,19 +35,19 @@ public final class AppIconResizer {
                 let currentPath = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
 
                 guard let inputImage = CIImage(contentsOf: URL(fileURLWithPath: fileName, relativeTo: currentPath)) else {
-                    // TODO: Print error
+                    print("Error: Input image is not valid!")
                     return
                 }
 
                 guard let image = inputImage.cgImage?.resize(to: size) else {
-                    // TODO: Print error
+                    print("Error: Input image couldn't be resized")
                     return
                 }
 
                 let url = URL(fileURLWithPath: "\(Int(size.height)).png", relativeTo: currentPath) as CFURL
 
                 guard let destination = CGImageDestinationCreateWithURL(url, kUTTypePNG, 1, nil) else {
-                    // TODO: Print error
+                    print("Error: Image couldn't be written in current directory")
                     return
                 }
 
@@ -97,10 +97,9 @@ extension CGImage {
 extension CIImage {
     var cgImage: CGImage? {
         let context = CIContext(options: nil)
-        // TODO: make this a guard
-        if let cgImage = context.createCGImage(self, from: self.extent) {
-            return cgImage
+        guard let cgImage = context.createCGImage(self, from: self.extent) else {
+            return nil
         }
-        return nil
+        return cgImage
     }
 }

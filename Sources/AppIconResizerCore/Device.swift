@@ -1,7 +1,7 @@
 import CoreImage
 
 // Different devices with icon resolutions
-public enum Device: String {
+public enum Device: String, CaseIterable {
     case iphone
     case ipad
     case watch
