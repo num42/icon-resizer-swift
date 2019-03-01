@@ -3,8 +3,46 @@ import CoreImage
 import Files
 import Foundation
 
-public final class AppIconResizer {
+struct AppIconSetContents: Encodable {
+    let images: [AppIconEntry]
+    let info: Info
+}
 
+struct AppIconEntry: Encodable {
+    let size: CGSize
+    let idiom: String
+    let scale: Int
+
+    var fileName: String {
+        return "AppIcon-\(size.width)x\(size.height)"
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case size
+        case idiom
+        case fileName
+        case scale
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode("\(Int(size.width))x\(Int(size.height))", forKey: .size)
+        try container.encode(scale, forKey: .scale)
+        try container.encode(idiom, forKey: .idiom)
+        try container.encode(fileName, forKey: .fileName)
+    }
+}
+
+struct Info: Encodable {
+    let version: Int
+    let author: String
+}
+
+public final class AppIconResizer {
+    
+
+
+    
     // Create one dimensional String array 'arguments'
     private let arguments: [String]
 
@@ -25,6 +63,17 @@ public final class AppIconResizer {
             }
             self?.render(device: device, fileName: fileName, badgeFileName: badgeFileName)
         }
+        
+        do {
+            let testImage = AppIconEntry(size: CGSize.init(width: 10, height: 10), idiom: "iphone", scale: 2)
+            let testInfo = Info(version: 4, author: "TestAuthor")
+            let testContents = AppIconSetContents(images: [testImage], info: testInfo)
+            
+            let jsonData = try JSONEncoder().encode(testContents)
+            let jsonString = String(data: jsonData, encoding: .utf8)!
+            print(jsonString)
+
+        } catch { print(error) }
 
         resizingCommand.run()
     }
@@ -39,9 +88,12 @@ public final class AppIconResizer {
                     return
                 }
                 
-                let badgeImage = CIImage(contentsOf: URL(fileURLWithPath: badgeFileName, relativeTo: currentPath))
+                guard let badgeImage = CIImage(contentsOf: URL(fileURLWithPath: badgeFileName, relativeTo: currentPath)) else {
+                    print("Error: Badge image with name \(badgeFileName) is not valid in current path!")
+                    return
+                }
 
-                guard let image = inputImage.cgImage?.resize(to: size, badgedBy: badgeImage?.cgImage) else {
+                guard let image = inputImage.cgImage?.resize(to: size, badgedBy: badgeImage.cgImage) else {
                     print("Error: Input image couldn't be resized")
                     return
                 }
