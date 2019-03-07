@@ -32,7 +32,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		716B0B012226DACD00C7A339 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B0B002226DACD00C7A339 /* Device.swift */; };
+		716B0B012226DACD00C7A339 /* Idiom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B0B002226DACD00C7A339 /* Idiom.swift */; };
 		716B0B032226DAEF00C7A339 /* VirtualDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B0B022226DAEF00C7A339 /* VirtualDevice.swift */; };
 		OBJ_100 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* CommandRunner.swift */; };
 		OBJ_101 /* CommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* CommandType.swift */; };
@@ -142,7 +142,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		716B0B002226DACD00C7A339 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		716B0B002226DACD00C7A339 /* Idiom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Idiom.swift; sourceTree = "<group>"; };
 		716B0B022226DAEF00C7A339 /* VirtualDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualDevice.swift; sourceTree = "<group>"; };
 		"AppIconResizer::AppIconResizer::Product" /* AppIconResizer */ = {isa = PBXFileReference; lastKnownFileType = text; path = AppIconResizer; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AppIconResizer::AppIconResizerCore::Product" /* AppIconResizerCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppIconResizerCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,7 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_11 /* AppIconResizer.swift */,
-				716B0B002226DACD00C7A339 /* Device.swift */,
+				716B0B002226DACD00C7A339 /* Idiom.swift */,
 				716B0B022226DAEF00C7A339 /* VirtualDevice.swift */,
 			);
 			name = AppIconResizerCore;
@@ -548,7 +548,7 @@
 			files = (
 				OBJ_60 /* AppIconResizer.swift in Sources */,
 				716B0B032226DAEF00C7A339 /* VirtualDevice.swift in Sources */,
-				716B0B012226DACD00C7A339 /* Device.swift in Sources */,
+				716B0B012226DACD00C7A339 /* Idiom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,8 +4,14 @@ import Files
 import Foundation
 
 struct AppIconSetContents: Encodable {
-    let images: [AppIconEntry]
+    let iconEntries: [AppIconEntry]
     let info: Info
+    
+    private enum CodingKeys: String, CodingKey {
+        case iconEntries = "images"
+        case info
+    }
+    
 }
 
 struct AppIconEntry: Encodable {
@@ -14,20 +20,20 @@ struct AppIconEntry: Encodable {
     let scale: Int
 
     var fileName: String {
-        return "AppIcon-\(size.width)x\(size.height)"
+        return "AppIcon-\(Int(size.width))x\(Int(size.height))"
     }
     
     private enum CodingKeys: String, CodingKey {
         case size
         case idiom
-        case fileName
+        case fileName = "filename"
         case scale
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode("\(Int(size.width))x\(Int(size.height))", forKey: .size)
-        try container.encode(scale, forKey: .scale)
+        try container.encode("\(scale)x", forKey: .scale)
         try container.encode(idiom, forKey: .idiom)
         try container.encode(fileName, forKey: .fileName)
     }
@@ -39,9 +45,6 @@ struct Info: Encodable {
 }
 
 public final class AppIconResizer {
-    
-
-
     
     // Create one dimensional String array 'arguments'
     private let arguments: [String]
@@ -56,31 +59,41 @@ public final class AppIconResizer {
             Option("device", default: "all"),
             Option("badge", default:"test"),
             Argument<String>("filename")
-        ) { [weak self] device, badgeFileName, fileName in
-            guard let device = Device(rawValue: device.lowercased()) else {
-                print("Error: Entered device is not a valid device! Valid devices are \(Device.allCases.map { $0.rawValue }.joined(separator: ", "))")
+        ) { [weak self] idiom, badgeFileName, fileName in
+            guard let idiom = Idiom(rawValue: idiom.lowercased()) else {
+                print("Error: Entered idiom is not a valid idiom! Valid idioms are \(Idiom.allCases.map { $0.rawValue }.joined(separator: ", "))")
                 return
             }
-            self?.render(device: device, fileName: fileName, badgeFileName: badgeFileName)
+            self?.render(idiom: idiom, fileName: fileName, badgeFileName: badgeFileName)
         }
-        
-        do {
-            let testImage = AppIconEntry(size: CGSize.init(width: 10, height: 10), idiom: "iphone", scale: 2)
-            let testInfo = Info(version: 4, author: "TestAuthor")
-            let testContents = AppIconSetContents(images: [testImage], info: testInfo)
-            
-            let jsonData = try JSONEncoder().encode(testContents)
-            let jsonString = String(data: jsonData, encoding: .utf8)!
-            print(jsonString)
-
-        } catch { print(error) }
 
         resizingCommand.run()
     }
 
-    public func render(device: Device, fileName: String, badgeFileName: String) {
-        device.sizes
-            .forEach { size in
+    public func render(idiom: Idiom, fileName: String, badgeFileName: String) {
+        // Get app icon entries
+        let appIconEntries = idiom.appIconEntries
+        
+        // Write app icon entries to contents json
+        
+        
+        let info = Info(version: 1, author: "AppIconResizer")
+        let contents = AppIconSetContents(iconEntries: appIconEntries, info: info)
+        do {
+            let jsonData = try JSONEncoder().encode(contents)
+            let jsonString = jsonData.prettyPrintedJSONString
+            print(jsonString)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+        
+        
+        // write png files
+        let sizes = Set(appIconEntries.map{ $0.size.width }).sorted()
+        
+        sizes.forEach { width in
+                let size = CGSize(width: width, height: width)
+            
                 let currentPath = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
 
                 guard let inputImage = CIImage(contentsOf: URL(fileURLWithPath: fileName, relativeTo: currentPath)) else {
@@ -169,5 +182,15 @@ extension CIImage {
             return nil
         }
         return cgImage
+    }
+}
+
+extension Data {
+    var prettyPrintedJSONString: NSString? { /// NSString gives us a nice sanitized debugDescription
+        guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
+            let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),
+            let prettyPrintedString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else { return nil }
+        
+        return prettyPrintedString
     }
 }
