@@ -4,7 +4,7 @@ import Files
 import Foundation
 
 struct AppIconSetContents: Encodable {
-    let iconEntries: [AppIconEntry]
+    let iconEntries: [AppIconEntry]?
     let info: Info
     
     private enum CodingKeys: String, CodingKey {
@@ -55,6 +55,7 @@ public final class AppIconResizer {
     }
 
     public func run() throws {
+        
         let resizingCommand = command(
             Option("device", default: "all"),
             Option("badge", default:"test"),
@@ -64,25 +65,47 @@ public final class AppIconResizer {
                 print("Error: Entered idiom is not a valid idiom! Valid idioms are \(Idiom.allCases.map { $0.rawValue }.joined(separator: ", "))")
                 return
             }
-            self?.render(idiom: idiom, fileName: fileName, badgeFileName: badgeFileName)
+            try self?.render(idiom: idiom, fileName: fileName, badgeFileName: badgeFileName)
         }
-
+        
+        
+        
         resizingCommand.run()
     }
 
-    public func render(idiom: Idiom, fileName: String, badgeFileName: String) {
+    public func render(idiom: Idiom, fileName: String, badgeFileName: String) throws {
+        
+        let fileManager = FileManager.default
+        let currentDirectory = FileManager.default.currentDirectoryPath
+        
+        let assetsJsonPath =  currentDirectory + "/AppIcon.xcassets/Contents.json"
+        let iconSetJsonPath = currentDirectory + "/AppIcon.xcassets/AppIcon.appiconset/Contents.json"
+        
+        //TODO: Error handling
+        
+        do {
+            try fileManager.createDirectory(atPath: currentDirectory + "/AppIcon.xcassets/AppIcon.appiconset", withIntermediateDirectories: true, attributes: nil)
+            try fileManager.createFile(atPath: assetsJsonPath, contents: nil, attributes: nil)
+            try fileManager.createFile(atPath: iconSetJsonPath , contents: nil, attributes: nil)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+        
+        
         // Get app icon entries
         let appIconEntries = idiom.appIconEntries
         
         // Write app icon entries to contents json
-        
-        
         let info = Info(version: 1, author: "AppIconResizer")
+        let outerContents = AppIconSetContents(iconEntries: nil, info: info)
         let contents = AppIconSetContents(iconEntries: appIconEntries, info: info)
         do {
             let jsonData = try JSONEncoder().encode(contents)
+            let jsonInfoData = try JSONEncoder().encode(outerContents)
             let jsonString = jsonData.prettyPrintedJSONString
-            print(jsonString)
+            let jsonInfoString = jsonInfoData.prettyPrintedJSONString
+            try jsonString?.write(toFile: iconSetJsonPath, atomically: true, encoding: String.Encoding.utf8.rawValue)
+            try jsonInfoString?.write(toFile: assetsJsonPath, atomically: true, encoding: String.Encoding.utf8.rawValue)
         } catch {
             fatalError(error.localizedDescription)
         }
@@ -95,6 +118,8 @@ public final class AppIconResizer {
                 let size = CGSize(width: width, height: width)
             
                 let currentPath = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
+                let destinationPath = URL(fileURLWithPath: FileManager.default.currentDirectoryPath + "/AppIcon.xcassets/AppIcon.appiconset")
+            
 
                 guard let inputImage = CIImage(contentsOf: URL(fileURLWithPath: fileName, relativeTo: currentPath)) else {
                     print("Error: Input image with name \(fileName) is not valid in current path!")
@@ -111,7 +136,7 @@ public final class AppIconResizer {
                     return
                 }
 
-                let url = URL(fileURLWithPath: "\(Int(size.height)).png", relativeTo: currentPath) as CFURL
+                let url = URL(fileURLWithPath: "\(Int(size.height)).png", relativeTo: destinationPath) as CFURL
 
                 guard let destination = CGImageDestinationCreateWithURL(url, kUTTypePNG, 1, nil) else {
                     print("Error: Image couldn't be written in current directory")
