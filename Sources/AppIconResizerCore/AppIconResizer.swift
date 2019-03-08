@@ -110,17 +110,15 @@ public final class AppIconResizer {
         let fileManager = FileManager.default
         
         let targetURL = URL(fileURLWithPath: targetPath)
-        let xcAssetsURL = targetURL.appendingPathComponent("AppIcon.xcassets")
+        let xcAssetsURL = targetURL.appendingPathComponent("AppIcon.xcassets", isDirectory: true)
         let xcAssetsJsonURL = URL(fileURLWithPath: "Contents.json", relativeTo: xcAssetsURL)
-        let iconSetURL = xcAssetsURL.appendingPathComponent("AppIcon.appiconset")
+        let iconSetURL = xcAssetsURL.appendingPathComponent("AppIcon.appiconset", isDirectory: true)
         let iconSetJsonURL = URL(fileURLWithPath: "Contents.json", relativeTo: iconSetURL)
         
         //TODO: Error handling
         
         do {
             try fileManager.createDirectory(atPath: iconSetURL.path, withIntermediateDirectories: true, attributes: nil)
-            fileManager.createFile(atPath: xcAssetsJsonURL.path, contents: nil, attributes: nil)
-            fileManager.createFile(atPath: iconSetJsonURL.path , contents: nil, attributes: nil)
         } catch {
             fatalError(error.localizedDescription)
         }
@@ -139,8 +137,8 @@ public final class AppIconResizer {
             let jsonInfoData = try JSONEncoder().encode(outerContents)
             let jsonString = jsonData.prettyPrintedJSONString
             let jsonInfoString = jsonInfoData.prettyPrintedJSONString
-            try jsonString?.write(toFile: iconSetJsonURL.path, atomically: true, encoding: String.Encoding.utf8.rawValue)
-            try jsonInfoString?.write(toFile: xcAssetsJsonURL.path, atomically: true, encoding: String.Encoding.utf8.rawValue)
+            try jsonInfoString?.write(to: xcAssetsJsonURL, atomically: true, encoding: String.Encoding.utf8.rawValue)
+            try jsonString?.write(to: iconSetJsonURL, atomically: true, encoding: String.Encoding.utf8.rawValue)
         } catch {
             fatalError(error.localizedDescription)
         }
@@ -182,16 +180,16 @@ public final class AppIconResizer {
                     return
                 }
             
-                let targetImageFileURL = URL(fileURLWithPath: "\(Int(size.height)).png", relativeTo: iconSetURL) as CFURL
+                let targetImageFileURL = URL(fileURLWithPath: "AppIcon-\(Int(size.height))x\(Int(size.width)).png", relativeTo: iconSetURL)
 
-                guard let destination = CGImageDestinationCreateWithURL(targetImageFileURL, kUTTypePNG, 1, nil) else {
+                guard let destination = CGImageDestinationCreateWithURL(URL(fileURLWithPath: targetImageFileURL.path) as CFURL, kUTTypePNG, 1, nil) else {
                     print("Error: Image couldn't be written in current directory")
                     return
                 }
 
                 CGImageDestinationAddImage(destination, image, options as CFDictionary)
                 CGImageDestinationFinalize(destination)
-                print("Created AppIcon from file \(inputFileURL.path) in \(size)")
+                print("Created AppIcon from file \(inputFileURL.path) at \(targetImageFileURL.path) in \(size)")
             }
     }
 
