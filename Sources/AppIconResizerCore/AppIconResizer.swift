@@ -14,13 +14,17 @@ struct AppIconSetContents: Encodable {
     
 }
 
-struct AppIconEntry: Encodable {
-    let size: CGSize
+struct AppIconEntry: Encodable, Hashable {
+    let size: CGFloat
     let idiom: String
     let scale: Int
 
+    var scaledSize: CGFloat {
+        return size * CGFloat(scale)
+    }
+    
     var fileName: String {
-        return "AppIcon-\(Int(size.width))x\(Int(size.height))"
+        return "AppIcon-\(Int(scaledSize))x\(Int(scaledSize))"
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -32,7 +36,7 @@ struct AppIconEntry: Encodable {
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode("\(Int(size.width))x\(Int(size.height))", forKey: .size)
+        try container.encode("\(Int(scaledSize))x\(Int(scaledSize))", forKey: .size)
         try container.encode("\(scale)x", forKey: .scale)
         try container.encode(idiom, forKey: .idiom)
         try container.encode(fileName, forKey: .fileName)
@@ -56,44 +60,75 @@ public final class AppIconResizer {
 
     public func run() throws {
         
+        
         let resizingCommand = command(
-            Option("device", default: "all"),
-            Option("badge", default:"test"),
-            Argument<String>("filename")
-        ) { [weak self] idiom, badgeFileName, fileName in
-            guard let idiom = Idiom(rawValue: idiom.lowercased()) else {
-                print("Error: Entered idiom is not a valid idiom! Valid idioms are \(Idiom.allCases.map { $0.rawValue }.joined(separator: ", "))")
-                return
+            VariadicOption("device", default: ["all"]),
+            Option<String?>("badge", default: nil),
+            Option("targetPath", default: FileManager.default.currentDirectoryPath),
+            Argument<String>("inputPath")
+        ) { [weak self] idiomStrings, badgeFilePath, targetPath, filePath in
+            let idioms = Set(idiomStrings).map { idiomString -> Idiom in
+                guard let idiom = Idiom(rawValue: idiomString.lowercased()) else{
+                    fatalError("\(idiomString) is an unknown value. Valid values are \(Idiom.allCases.map { $0.rawValue }.joined(separator: ", "))")
+                }
+                return idiom
+                
             }
-            try self?.render(idiom: idiom, fileName: fileName, badgeFileName: badgeFileName)
+            let currentDirectoryURL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
+            
+            let inputFileURL : URL
+            
+            let badgeFileURL : URL?
+            
+            if let badgeFilePath = badgeFilePath {
+                if badgeFilePath.starts(with: "/") {
+                    badgeFileURL = URL(fileURLWithPath: badgeFilePath)
+                } else {
+                    badgeFileURL = URL(fileURLWithPath: badgeFilePath, relativeTo: currentDirectoryURL)
+                }
+            } else {
+                badgeFileURL = nil
+            }
+            
+            if filePath.starts(with: "/") {
+                inputFileURL = URL(fileURLWithPath: filePath)
+            } else {
+                inputFileURL = URL(fileURLWithPath: filePath, relativeTo: currentDirectoryURL)
+            }
+            
+            
+            
+            
+            try self?.render(idioms: idioms, inputFileURL: inputFileURL, targetPath: targetPath, badgeFileURL: badgeFileURL)
         }
-        
-        
         
         resizingCommand.run()
     }
 
-    public func render(idiom: Idiom, fileName: String, badgeFileName: String) throws {
+    public func render(idioms: [Idiom], inputFileURL: URL, targetPath: String, badgeFileURL: URL?) throws {
         
         let fileManager = FileManager.default
-        let currentDirectory = FileManager.default.currentDirectoryPath
         
-        let assetsJsonPath =  currentDirectory + "/AppIcon.xcassets/Contents.json"
-        let iconSetJsonPath = currentDirectory + "/AppIcon.xcassets/AppIcon.appiconset/Contents.json"
+        let targetURL = URL(fileURLWithPath: targetPath)
+        let xcAssetsURL = targetURL.appendingPathComponent("AppIcon.xcassets")
+        let xcAssetsJsonURL = URL(fileURLWithPath: "Contents.json", relativeTo: xcAssetsURL)
+        let iconSetURL = xcAssetsURL.appendingPathComponent("AppIcon.appiconset")
+        let iconSetJsonURL = URL(fileURLWithPath: "Contents.json", relativeTo: iconSetURL)
         
         //TODO: Error handling
         
         do {
-            try fileManager.createDirectory(atPath: currentDirectory + "/AppIcon.xcassets/AppIcon.appiconset", withIntermediateDirectories: true, attributes: nil)
-            try fileManager.createFile(atPath: assetsJsonPath, contents: nil, attributes: nil)
-            try fileManager.createFile(atPath: iconSetJsonPath , contents: nil, attributes: nil)
+            try fileManager.createDirectory(atPath: iconSetURL.path, withIntermediateDirectories: true, attributes: nil)
+            fileManager.createFile(atPath: xcAssetsJsonURL.path, contents: nil, attributes: nil)
+            fileManager.createFile(atPath: iconSetJsonURL.path , contents: nil, attributes: nil)
         } catch {
             fatalError(error.localizedDescription)
         }
         
         
         // Get app icon entries
-        let appIconEntries = idiom.appIconEntries
+        let appIconEntriesWithDuplicates = idioms.flatMap { $0.appIconEntries }
+        let appIconEntries = Array(Set<AppIconEntry>(appIconEntriesWithDuplicates))
         
         // Write app icon entries to contents json
         let info = Info(version: 1, author: "AppIconResizer")
@@ -104,54 +139,59 @@ public final class AppIconResizer {
             let jsonInfoData = try JSONEncoder().encode(outerContents)
             let jsonString = jsonData.prettyPrintedJSONString
             let jsonInfoString = jsonInfoData.prettyPrintedJSONString
-            try jsonString?.write(toFile: iconSetJsonPath, atomically: true, encoding: String.Encoding.utf8.rawValue)
-            try jsonInfoString?.write(toFile: assetsJsonPath, atomically: true, encoding: String.Encoding.utf8.rawValue)
+            try jsonString?.write(toFile: iconSetJsonURL.path, atomically: true, encoding: String.Encoding.utf8.rawValue)
+            try jsonInfoString?.write(toFile: xcAssetsJsonURL.path, atomically: true, encoding: String.Encoding.utf8.rawValue)
         } catch {
             fatalError(error.localizedDescription)
         }
         
         
         // write png files
-        let sizes = Set(appIconEntries.map{ $0.size.width }).sorted()
+        let sizes = Set(appIconEntries.map{ $0.size }).sorted()
+        
+        guard let inputImage = CIImage(contentsOf: inputFileURL) else {
+            print("Error: Input image at path \(inputFileURL) is not valid in current path!")
+            return
+        }
+        
+        let badgeImage: CIImage?
+        
+        if let badgeFileURL = badgeFileURL {
+            guard let nonOptionalBadgeImage = CIImage(contentsOf: badgeFileURL) else {
+                print("Error: Badge image at path \(badgeFileURL.path) could not be found!")
+                return
+            }
+            
+            badgeImage = nonOptionalBadgeImage
+        } else {
+            badgeImage = nil
+        }
+        
+        let bgColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
+        
+        let options : [AnyHashable:Any] = [
+            kCGImageDestinationBackgroundColor: bgColor as Any
+        ]
+        
         
         sizes.forEach { width in
                 let size = CGSize(width: width, height: width)
-            
-                let currentPath = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
-                let destinationPath = URL(fileURLWithPath: FileManager.default.currentDirectoryPath + "/AppIcon.xcassets/AppIcon.appiconset")
-            
 
-                guard let inputImage = CIImage(contentsOf: URL(fileURLWithPath: fileName, relativeTo: currentPath)) else {
-                    print("Error: Input image with name \(fileName) is not valid in current path!")
-                    return
-                }
-                
-                guard let badgeImage = CIImage(contentsOf: URL(fileURLWithPath: badgeFileName, relativeTo: currentPath)) else {
-                    print("Error: Badge image with name \(badgeFileName) is not valid in current path!")
-                    return
-                }
-
-                guard let image = inputImage.cgImage?.resize(to: size, badgedBy: badgeImage.cgImage) else {
+                guard let image = inputImage.cgImage?.resize(to: size, badgedBy: badgeImage?.cgImage) else {
                     print("Error: Input image couldn't be resized")
                     return
                 }
+            
+                let targetImageFileURL = URL(fileURLWithPath: "\(Int(size.height)).png", relativeTo: iconSetURL) as CFURL
 
-                let url = URL(fileURLWithPath: "\(Int(size.height)).png", relativeTo: destinationPath) as CFURL
-
-                guard let destination = CGImageDestinationCreateWithURL(url, kUTTypePNG, 1, nil) else {
+                guard let destination = CGImageDestinationCreateWithURL(targetImageFileURL, kUTTypePNG, 1, nil) else {
                     print("Error: Image couldn't be written in current directory")
                     return
                 }
 
-                let bgColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
-                
-                let options : [AnyHashable:Any] = [
-                    kCGImageDestinationBackgroundColor: bgColor as Any
-                ]
-
                 CGImageDestinationAddImage(destination, image, options as CFDictionary)
                 CGImageDestinationFinalize(destination)
-                print("Created AppIcon from \(fileName) in \(size)")
+                print("Created AppIcon from file \(inputFileURL.path) in \(size)")
             }
     }
 
@@ -217,5 +257,24 @@ extension Data {
             let prettyPrintedString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else { return nil }
         
         return prettyPrintedString
+    }
+}
+
+extension Optional: CustomStringConvertible where Wrapped: ArgumentConvertible {
+    public var description: String {
+        if let val = self {
+            return "Some(\(val))"
+        }
+        return "None"
+    }
+}
+
+extension Optional: ArgumentConvertible where Wrapped: ArgumentConvertible {
+    public init(parser: ArgumentParser) throws {
+        if let wrapped = parser.shift() as? Wrapped {
+            self = wrapped
+        } else {
+            self = .none
+        }
     }
 }

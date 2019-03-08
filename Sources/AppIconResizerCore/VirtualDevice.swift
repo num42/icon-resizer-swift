@@ -57,8 +57,6 @@ public enum VirtualDevice {
             sizes = [1024]
         }
         let appIconEntries = sizes
-            .map { $0 * CGFloat(scale)}
-            .map{CGSize(width: $0, height: $0)}
             .map{ AppIconEntry(size: $0, idiom: idiom.stringRepresentation, scale: scale) }
         return appIconEntries
         
