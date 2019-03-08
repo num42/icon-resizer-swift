@@ -32,6 +32,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		7148B2172232AAA000ED54FC /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148B2162232AAA000ED54FC /* DoubleExtensions.swift */; };
+		7148B2192232AB5500ED54FC /* CGImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148B2182232AB5500ED54FC /* CGImageExtensions.swift */; };
+		7148B21B2232AB6400ED54FC /* CIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148B21A2232AB6400ED54FC /* CIImageExtensions.swift */; };
+		7148B21D2232AC0300ED54FC /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148B21C2232AC0300ED54FC /* DataExtensions.swift */; };
+		7148B21F2232ACAD00ED54FC /* AppIconEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148B21E2232ACAD00ED54FC /* AppIconEntry.swift */; };
+		7148B2212232AD4900ED54FC /* ConvertibleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148B2202232AD4900ED54FC /* ConvertibleExtensions.swift */; };
 		716B0B012226DACD00C7A339 /* Idiom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B0B002226DACD00C7A339 /* Idiom.swift */; };
 		716B0B032226DAEF00C7A339 /* VirtualDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B0B022226DAEF00C7A339 /* VirtualDevice.swift */; };
 		OBJ_100 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* CommandRunner.swift */; };
@@ -142,6 +148,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7148B2162232AAA000ED54FC /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
+		7148B2182232AB5500ED54FC /* CGImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImageExtensions.swift; sourceTree = "<group>"; };
+		7148B21A2232AB6400ED54FC /* CIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIImageExtensions.swift; sourceTree = "<group>"; };
+		7148B21C2232AC0300ED54FC /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
+		7148B21E2232ACAD00ED54FC /* AppIconEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconEntry.swift; sourceTree = "<group>"; };
+		7148B2202232AD4900ED54FC /* ConvertibleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleExtensions.swift; sourceTree = "<group>"; };
 		716B0B002226DACD00C7A339 /* Idiom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Idiom.swift; sourceTree = "<group>"; };
 		716B0B022226DAEF00C7A339 /* VirtualDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualDevice.swift; sourceTree = "<group>"; };
 		"AppIconResizer::AppIconResizer::Product" /* AppIconResizer */ = {isa = PBXFileReference; lastKnownFileType = text; path = AppIconResizer; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +234,12 @@
 				OBJ_11 /* AppIconResizer.swift */,
 				716B0B002226DACD00C7A339 /* Idiom.swift */,
 				716B0B022226DAEF00C7A339 /* VirtualDevice.swift */,
+				7148B2162232AAA000ED54FC /* DoubleExtensions.swift */,
+				7148B2182232AB5500ED54FC /* CGImageExtensions.swift */,
+				7148B21A2232AB6400ED54FC /* CIImageExtensions.swift */,
+				7148B21C2232AC0300ED54FC /* DataExtensions.swift */,
+				7148B21E2232ACAD00ED54FC /* AppIconEntry.swift */,
+				7148B2202232AD4900ED54FC /* ConvertibleExtensions.swift */,
 			);
 			name = AppIconResizerCore;
 			path = Sources/AppIconResizerCore;
@@ -311,7 +329,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -321,7 +339,6 @@
 				OBJ_18 /* Dependencies */,
 				OBJ_34 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Configs */ = {
@@ -490,7 +507,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_34 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -546,8 +563,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				7148B2172232AAA000ED54FC /* DoubleExtensions.swift in Sources */,
+				7148B21F2232ACAD00ED54FC /* AppIconEntry.swift in Sources */,
 				OBJ_60 /* AppIconResizer.swift in Sources */,
 				716B0B032226DAEF00C7A339 /* VirtualDevice.swift in Sources */,
+				7148B2212232AD4900ED54FC /* ConvertibleExtensions.swift in Sources */,
+				7148B21B2232AB6400ED54FC /* CIImageExtensions.swift in Sources */,
+				7148B21D2232AC0300ED54FC /* DataExtensions.swift in Sources */,
+				7148B2192232AB5500ED54FC /* CGImageExtensions.swift in Sources */,
 				716B0B012226DACD00C7A339 /* Idiom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

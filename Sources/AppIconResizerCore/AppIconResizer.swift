@@ -1,6 +1,5 @@
 import Commander
 import CoreImage
-import Files
 import Foundation
 
 public final class AppIconResizer {

@@ -10,10 +10,6 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/JohnSundell/Files.git",
-            from: "2.2.1"
-        ),
-        .package(
             url: "https://github.com/kylef/Commander.git",
             from: "0.8.0"
         ),
@@ -25,9 +21,9 @@ let package = Package(
             name: "AppIconResizer",
             dependencies: ["AppIconResizerCore"]),
         .target(name: "AppIconResizerCore",
-        dependencies: ["Files", "Commander"]),
+        dependencies: ["Commander"]),
         .testTarget(
             name: "AppIconResizerTests",
-            dependencies: ["AppIconResizer", "Files", "Commander"]),
+            dependencies: ["AppIconResizer", "Commander"]),
     ]
 )
