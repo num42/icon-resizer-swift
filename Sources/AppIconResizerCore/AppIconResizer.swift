@@ -3,55 +3,6 @@ import CoreImage
 import Files
 import Foundation
 
-struct AppIconSetContents: Encodable {
-    let iconEntries: [AppIconEntry]?
-    let info: Info
-    
-    private enum CodingKeys: String, CodingKey {
-        case iconEntries = "images"
-        case info
-    }
-    
-}
-
-struct AppIconEntry: Encodable, Hashable {
-    let size: CGFloat
-    let idiom: String
-    let scale: Int
-
-    var scaledSize: CGFloat {
-        return size * CGFloat(scale)
-    }
-    
-    var fileName: String {
-        return "AppIcon-\(Int(scaledSize))x\(Int(scaledSize)).png"
-    }
-    
-    private enum CodingKeys: String, CodingKey {
-        case size
-        case idiom
-        case fileName = "filename"
-        case scale
-    }
-    
-    private var displaySize: String {
-        return Double(size).withDecimals(1).replacingOccurrences(of: ".0", with: "")
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode("\(displaySize)x\(displaySize)", forKey: .size)
-        try container.encode("\(scale)x", forKey: .scale)
-        try container.encode(idiom, forKey: .idiom)
-        try container.encode(fileName, forKey: .fileName)
-    }
-}
-
-struct Info: Encodable {
-    let version: Int
-    let author: String
-}
-
 public final class AppIconResizer {
     
     // Create one dimensional String array 'arguments'
@@ -64,7 +15,6 @@ public final class AppIconResizer {
 
     public func run() throws {
         
-        
         let resizingCommand = command(
             VariadicOption("device", default: ["all"]),
             Option<String?>("badge", default: nil),
@@ -76,12 +26,10 @@ public final class AppIconResizer {
                     fatalError("\(idiomString) is an unknown value. Valid values are \(Idiom.allCases.map { $0.rawValue }.joined(separator: ", "))")
                 }
                 return idiom
-                
             }
+            
             let currentDirectoryURL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
-            
             let inputFileURL : URL
-            
             let badgeFileURL : URL?
             
             if let badgeFilePath = badgeFilePath {
@@ -100,9 +48,6 @@ public final class AppIconResizer {
                 inputFileURL = URL(fileURLWithPath: filePath, relativeTo: currentDirectoryURL)
             }
             
-            
-            
-            
             try self?.render(idioms: idioms, inputFileURL: inputFileURL, targetPath: targetPath, badgeFileURL: badgeFileURL)
         }
         
@@ -119,14 +64,11 @@ public final class AppIconResizer {
         let iconSetURL = xcAssetsURL.appendingPathComponent("AppIcon.appiconset", isDirectory: true)
         let iconSetJsonURL = URL(fileURLWithPath: "Contents.json", relativeTo: iconSetURL)
         
-        //TODO: Error handling
-        
         do {
             try fileManager.createDirectory(atPath: iconSetURL.path, withIntermediateDirectories: true, attributes: nil)
         } catch {
             fatalError(error.localizedDescription)
         }
-        
         
         // Get app icon entries
         let appIconEntriesWithDuplicates = idioms.flatMap { $0.appIconEntries }
@@ -146,7 +88,6 @@ public final class AppIconResizer {
         } catch {
             fatalError(error.localizedDescription)
         }
-        
         
         // write png files
         let sizes = Set(appIconEntries.map{ $0.scaledSize }).sorted()
@@ -175,7 +116,6 @@ public final class AppIconResizer {
             kCGImageDestinationBackgroundColor: bgColor as Any
         ]
         
-        
         sizes.forEach { width in
                 let size = CGSize(width: width, height: width)
 
@@ -196,8 +136,6 @@ public final class AppIconResizer {
                 print("Created AppIcon from file \(inputFileURL.path) at \(targetImageFileURL.path) in \(size)")
             }
     }
-
-    
 }
 
 public extension AppIconResizer {
@@ -206,84 +144,3 @@ public extension AppIconResizer {
         case failedToCreateFile
     }
 }
-
-extension CGImage {
-    func resize(to newSize: CGSize, badgedBy badge: CGImage? = nil) -> CGImage? {
-        let height = Int(newSize.height)
-
-        guard let colorSpace = self.colorSpace else {
-            return nil
-        }
-
-        guard let context = CGContext(
-            data: nil,
-            width: height,
-            height: height,
-            bitsPerComponent: self.bitsPerComponent,
-            bytesPerRow: self.bytesPerRow,
-            space: colorSpace,
-            bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue
-        ) else {
-            return nil
-        }
-
-        // draw image to context (resizing it)
-        context.interpolationQuality = .high
-        context.setFillColor(CGColor.white)
-        context.fill(CGRect(x: 0, y: 0, width: height, height: height))
-        context.draw(self, in: CGRect(x: 0, y: 0, width: height, height: height))
-        
-        if let badge = badge {
-            context.draw(badge, in: CGRect(x: 0, y: 0, width: height, height: height))
-        }
-
-        // extract resulting image from context
-        return context.makeImage()
-    }
-}
-
-extension CIImage {
-    var cgImage: CGImage? {
-        let context = CIContext(options: nil)
-        guard let cgImage = context.createCGImage(self, from: self.extent) else {
-            return nil
-        }
-        return cgImage
-    }
-}
-
-extension Data {
-    var prettyPrintedJSONString: NSString? { /// NSString gives us a nice sanitized debugDescription
-        guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
-            let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),
-            let prettyPrintedString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else { return nil }
-        
-        return prettyPrintedString
-    }
-}
-
-extension Optional: CustomStringConvertible where Wrapped: ArgumentConvertible {
-    public var description: String {
-        if let val = self {
-            return "Some(\(val))"
-        }
-        return "None"
-    }
-}
-
-extension Optional: ArgumentConvertible where Wrapped: ArgumentConvertible {
-    public init(parser: ArgumentParser) throws {
-        if let wrapped = parser.shift() as? Wrapped {
-            self = wrapped
-        } else {
-            self = .none
-        }
-    }
-}
-
-extension Double {
-    func withDecimals(_ decimals: Int) -> String {
-        return String(format: "%.\(decimals)f", self)
-    }
-}
-
