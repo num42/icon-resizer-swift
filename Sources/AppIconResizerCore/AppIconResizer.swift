@@ -180,7 +180,7 @@ extension CGImage {
             bitsPerComponent: self.bitsPerComponent,
             bytesPerRow: self.bytesPerRow,
             space: colorSpace,
-            bitmapInfo: self.alphaInfo.rawValue
+            bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue
         ) else {
             return nil
         }
