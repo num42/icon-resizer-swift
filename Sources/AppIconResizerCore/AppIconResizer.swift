@@ -24,7 +24,7 @@ struct AppIconEntry: Encodable, Hashable {
     }
     
     var fileName: String {
-        return "AppIcon-\(Int(scaledSize))x\(Int(scaledSize))"
+        return "AppIcon-\(Int(scaledSize))x\(Int(scaledSize)).png"
     }
     
     private enum CodingKeys: String, CodingKey {
