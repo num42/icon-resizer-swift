@@ -34,9 +34,13 @@ struct AppIconEntry: Encodable, Hashable {
         case scale
     }
     
+    private var displaySize: String {
+        return Double(size).withDecimals(1).replacingOccurrences(of: ".0", with: "")
+    }
+    
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode("\(Int(size))x\(Int(size))", forKey: .size)
+        try container.encode("\(displaySize)x\(displaySize)", forKey: .size)
         try container.encode("\(scale)x", forKey: .scale)
         try container.encode(idiom, forKey: .idiom)
         try container.encode(fileName, forKey: .fileName)
@@ -276,3 +280,10 @@ extension Optional: ArgumentConvertible where Wrapped: ArgumentConvertible {
         }
     }
 }
+
+extension Double {
+    func withDecimals(_ decimals: Int) -> String {
+        return String(format: "%.\(decimals)f", self)
+    }
+}
+
