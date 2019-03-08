@@ -12,7 +12,7 @@ public enum VirtualDevice {
     
     // Assigning multiplication factors to different devices
     
-    var scale: CGFloat {
+    var scale: Int {
         switch self {
         case .iPhone3x, .watch3x:
             return 3
@@ -23,26 +23,42 @@ public enum VirtualDevice {
         }
     }
     
+    var idiom: Idiom {
+        switch self {
+        case .iPhone2x, .iPhone3x:
+            return .iphone
+        case .iPad1x, .iPad2x:
+            return .ipad
+        case .watch2x, .watch3x:
+            return .watch
+        case .marketing:
+            return .marketing
+        }
+    }
+    
     // Source:
     // https://github.com/KrauseFx/fastlane-plugin-appicon/blob/master/lib/fastlane/plugin/appicon/actions/appicon_action.rb
     
-    // Gives back array of real (not virtual) sizes
-    var sizes: [CGFloat] {
-        let result: [CGFloat]
+    // Gives back app icon entries
+    var appIconEntries: [AppIconEntry] {
+        let sizes: [CGFloat]
         switch self {
         case .iPhone2x, .iPhone3x:
-            result = [20, 29, 40, 60]
+            sizes = [20, 29, 40, 60]
         case .iPad1x:
-            result = [20, 29, 40, 76]
+            sizes = [20, 29, 40, 76]
         case .iPad2x:
-            result = VirtualDevice.iPad1x.sizes + [83.5]
+            sizes = [20, 29, 40, 76, 83.5]
         case .watch2x:
-            result = [24, 27.5, 29, 40, 44, 50, 86, 98, 108]
+            sizes = [24, 27.5, 29, 40, 44, 50, 86, 98, 108]
         case .watch3x:
-            result = [29]
+            sizes = [29]
         case .marketing:
-            result = [1024]
+            sizes = [1024]
         }
-        return result.map { $0 * scale }
+        let appIconEntries = sizes
+            .map{ AppIconEntry(size: $0, idiom: idiom.stringRepresentation, scale: scale) }
+        return appIconEntries
+        
     }
 }

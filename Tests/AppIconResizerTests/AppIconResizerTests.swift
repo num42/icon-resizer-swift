@@ -40,13 +40,13 @@ final class AppIconResizerTests: XCTestCase {
     
     func testDeviceSizes() {
         XCTAssert(
-            AppIconResizer.Device.iphone.sizes.map { $0.width } == [40, 58, 60, 80, 87, 120, 180]
+            Idiom.iphone.sizes.map { $0.width } == [40, 58, 60, 80, 87, 120, 180]
         )
         XCTAssert(
-            AppIconResizer.Device.ipad.sizes.map { $0.width } == [20, 29, 40, 58, 76, 80, 152, 167]
+            Idiom.ipad.sizes.map { $0.width } == [20, 29, 40, 58, 76, 80, 152, 167]
         )
         XCTAssert(
-            AppIconResizer.Device.watch.sizes.map { $0.width } == [48, 55, 58, 80, 87, 88, 100, 172, 196, 216]
+            Idiom.watch.sizes.map { $0.width } == [48, 55, 58, 80, 87, 88, 100, 172, 196, 216]
         )
     }
     

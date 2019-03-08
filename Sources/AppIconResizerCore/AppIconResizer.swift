@@ -1,10 +1,9 @@
 import Commander
 import CoreImage
-import Files
 import Foundation
 
 public final class AppIconResizer {
-
+    
     // Create one dimensional String array 'arguments'
     private let arguments: [String]
 
@@ -14,108 +13,133 @@ public final class AppIconResizer {
     }
 
     public func run() throws {
+        
         let resizingCommand = command(
-            Option("device", default: "all"),
-            Option("badge", default:"test"),
-            Argument<String>("filename")
-        ) { [weak self] device, badgeFileName, fileName in
-            guard let device = Device(rawValue: device.lowercased()) else {
-                print("Error: Entered device is not a valid device! Valid devices are \(Device.allCases.map { $0.rawValue }.joined(separator: ", "))")
-                return
+            VariadicOption("device", default: ["all"]),
+            Option<String?>("badge", default: nil),
+            Option("targetPath", default: FileManager.default.currentDirectoryPath),
+            Argument<String>("inputPath")
+        ) { [weak self] idiomStrings, badgeFilePath, targetPath, filePath in
+            let idioms = Set(idiomStrings).map { idiomString -> Idiom in
+                guard let idiom = Idiom(rawValue: idiomString.lowercased()) else{
+                    fatalError("\(idiomString) is an unknown value. Valid values are \(Idiom.allCases.map { $0.rawValue }.joined(separator: ", "))")
+                }
+                return idiom
             }
-            self?.render(device: device, fileName: fileName, badgeFileName: badgeFileName)
+            
+            let currentDirectoryURL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
+            let inputFileURL : URL
+            let badgeFileURL : URL?
+            
+            if let badgeFilePath = badgeFilePath {
+                if badgeFilePath.starts(with: "/") {
+                    badgeFileURL = URL(fileURLWithPath: badgeFilePath)
+                } else {
+                    badgeFileURL = URL(fileURLWithPath: badgeFilePath, relativeTo: currentDirectoryURL)
+                }
+            } else {
+                badgeFileURL = nil
+            }
+            
+            if filePath.starts(with: "/") {
+                inputFileURL = URL(fileURLWithPath: filePath)
+            } else {
+                inputFileURL = URL(fileURLWithPath: filePath, relativeTo: currentDirectoryURL)
+            }
+            
+            try self?.render(idioms: idioms, inputFileURL: inputFileURL, targetPath: targetPath, badgeFileURL: badgeFileURL)
         }
-
+        
         resizingCommand.run()
     }
 
-    public func render(device: Device, fileName: String, badgeFileName: String) {
-        device.sizes
-            .forEach { size in
-                let currentPath = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
-
-                guard let inputImage = CIImage(contentsOf: URL(fileURLWithPath: fileName, relativeTo: currentPath)) else {
-                    print("Error: Input image with name \(fileName) is not valid in current path!")
-                    return
-                }
-                
-                let badgeImage = CIImage(contentsOf: URL(fileURLWithPath: badgeFileName, relativeTo: currentPath))
+    public func render(idioms: [Idiom], inputFileURL: URL, targetPath: String, badgeFileURL: URL?) throws {
+        
+        let fileManager = FileManager.default
+        
+        let targetURL = URL(fileURLWithPath: targetPath)
+        let xcAssetsURL = targetURL.appendingPathComponent("AppIcon.xcassets", isDirectory: true)
+        let xcAssetsJsonURL = URL(fileURLWithPath: "Contents.json", relativeTo: xcAssetsURL)
+        let iconSetURL = xcAssetsURL.appendingPathComponent("AppIcon.appiconset", isDirectory: true)
+        let iconSetJsonURL = URL(fileURLWithPath: "Contents.json", relativeTo: iconSetURL)
+        
+        do {
+            try fileManager.createDirectory(atPath: iconSetURL.path, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+        
+        // Get app icon entries
+        let appIconEntriesWithDuplicates = idioms.flatMap { $0.appIconEntries }
+        let appIconEntries = Array(Set<AppIconEntry>(appIconEntriesWithDuplicates))
+        
+        // Write app icon entries to contents json
+        let info = Info(version: 1, author: "AppIconResizer")
+        let outerContents = AppIconSetContents(iconEntries: nil, info: info)
+        let contents = AppIconSetContents(iconEntries: appIconEntries, info: info)
+        do {
+            let jsonData = try JSONEncoder().encode(contents)
+            let jsonInfoData = try JSONEncoder().encode(outerContents)
+            let jsonString = jsonData.prettyPrintedJSONString
+            let jsonInfoString = jsonInfoData.prettyPrintedJSONString
+            try jsonInfoString?.write(to: xcAssetsJsonURL, atomically: true, encoding: String.Encoding.utf8.rawValue)
+            try jsonString?.write(to: iconSetJsonURL, atomically: true, encoding: String.Encoding.utf8.rawValue)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+        
+        // write png files
+        let sizes = Set(appIconEntries.map{ $0.scaledSize }).sorted()
+        
+        guard let inputImage = CIImage(contentsOf: inputFileURL) else {
+            print("Error: Input image at path \(inputFileURL) is not valid in current path!")
+            return
+        }
+        
+        let badgeImage: CIImage?
+        
+        if let badgeFileURL = badgeFileURL {
+            guard let nonOptionalBadgeImage = CIImage(contentsOf: badgeFileURL) else {
+                print("Error: Badge image at path \(badgeFileURL.path) could not be found!")
+                return
+            }
+            
+            badgeImage = nonOptionalBadgeImage
+        } else {
+            badgeImage = nil
+        }
+        
+        let bgColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
+        
+        let options : [AnyHashable:Any] = [
+            kCGImageDestinationBackgroundColor: bgColor as Any
+        ]
+        
+        sizes.forEach { width in
+                let size = CGSize(width: width, height: width)
 
                 guard let image = inputImage.cgImage?.resize(to: size, badgedBy: badgeImage?.cgImage) else {
                     print("Error: Input image couldn't be resized")
                     return
                 }
+            
+                let targetImageFileURL = URL(fileURLWithPath: "AppIcon-\(Int(size.height))x\(Int(size.width)).png", relativeTo: iconSetURL)
 
-                let url = URL(fileURLWithPath: "\(Int(size.height)).png", relativeTo: currentPath) as CFURL
-
-                guard let destination = CGImageDestinationCreateWithURL(url, kUTTypePNG, 1, nil) else {
+                guard let destination = CGImageDestinationCreateWithURL(URL(fileURLWithPath: targetImageFileURL.path) as CFURL, kUTTypePNG, 1, nil) else {
                     print("Error: Image couldn't be written in current directory")
                     return
                 }
 
-                let bgColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
-                
-                let options : [AnyHashable:Any] = [
-                    kCGImageDestinationBackgroundColor: bgColor as Any
-                ]
-
                 CGImageDestinationAddImage(destination, image, options as CFDictionary)
                 CGImageDestinationFinalize(destination)
-                print("Created AppIcon from \(fileName) in \(size)")
+                print("Created AppIcon from file \(inputFileURL.path) at \(targetImageFileURL.path) in \(size)")
             }
     }
-
-    
 }
 
 public extension AppIconResizer {
     enum Error: Swift.Error {
         case missingFileName
         case failedToCreateFile
-    }
-}
-
-extension CGImage {
-    func resize(to newSize: CGSize, badgedBy badge: CGImage? = nil) -> CGImage? {
-        let height = Int(newSize.height)
-
-        guard let colorSpace = self.colorSpace else {
-            return nil
-        }
-
-        guard let context = CGContext(
-            data: nil,
-            width: height,
-            height: height,
-            bitsPerComponent: self.bitsPerComponent,
-            bytesPerRow: self.bytesPerRow,
-            space: colorSpace,
-            bitmapInfo: self.alphaInfo.rawValue
-        ) else {
-            return nil
-        }
-
-        // draw image to context (resizing it)
-        context.interpolationQuality = .high
-        context.setFillColor(CGColor.white)
-        context.fill(CGRect(x: 0, y: 0, width: height, height: height))
-        context.draw(self, in: CGRect(x: 0, y: 0, width: height, height: height))
-        
-        if let badge = badge {
-            context.draw(badge, in: CGRect(x: 0, y: 0, width: height, height: height))
-        }
-
-        // extract resulting image from context
-        return context.makeImage()
-    }
-}
-
-extension CIImage {
-    var cgImage: CGImage? {
-        let context = CIContext(options: nil)
-        guard let cgImage = context.createCGImage(self, from: self.extent) else {
-            return nil
-        }
-        return cgImage
     }
 }
