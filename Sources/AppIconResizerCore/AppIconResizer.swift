@@ -36,7 +36,7 @@ struct AppIconEntry: Encodable, Hashable {
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode("\(Int(scaledSize))x\(Int(scaledSize))", forKey: .size)
+        try container.encode("\(Int(size))x\(Int(size))", forKey: .size)
         try container.encode("\(scale)x", forKey: .scale)
         try container.encode(idiom, forKey: .idiom)
         try container.encode(fileName, forKey: .fileName)
@@ -145,7 +145,7 @@ public final class AppIconResizer {
         
         
         // write png files
-        let sizes = Set(appIconEntries.map{ $0.size }).sorted()
+        let sizes = Set(appIconEntries.map{ $0.scaledSize }).sorted()
         
         guard let inputImage = CIImage(contentsOf: inputFileURL) else {
             print("Error: Input image at path \(inputFileURL) is not valid in current path!")
