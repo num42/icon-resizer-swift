@@ -36,7 +36,7 @@ Resizes `inputIcon.png` to iPhone sizes with badge `badge.png` and saves it to `
 Options:
 
 * **--devices**: Devices are `iphone`, `ipad`, `watch`, `ios-marketing` and `all` for all iOS resolutions. Multiple devices need to be separated by comma. When not given, all resolutions get written.
-* **--badge**: Enables you to give a path to a badge image, which will be printed upon the app icon (e.g. a "Debug" badge)
+* **--badge**: Enables you to specify a path to a badge image, which will be rendered on top of the app icon (e.g. a "Debug" badge)
 * **--targetPath**: The path that the folder structure and app icons will be written in. If no path is given by the user, icons get written into current path. 
 
 Arguments:
