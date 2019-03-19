@@ -22,12 +22,12 @@ make
 # Usage
 ## Examples
 ```shell
-icon-resizer-swift --device iphone --device ipad inputIcon.png
+icon-resizer-swift --devices iphone,ipad inputIcon.png
 ```
 Resizes `inputIcon.png` to iPhone and iPad sizes.
 
 ```shell
-icon-resizer-swift --device iphone --badge badge.png --targetPath /Users/steve/dev/icons inputIcon.png
+icon-resizer-swift --devices iphone --badge badge.png --targetPath /Users/steve/dev/icons inputIcon.png
 ```
 Resizes `inputIcon.png` to iPhone sizes with badge `badge.png` and saves it to `/Users/steve/dev/icons`.
 
@@ -35,7 +35,7 @@ Resizes `inputIcon.png` to iPhone sizes with badge `badge.png` and saves it to `
 
 Options:
 
-* **--device**: Devices are `iphone`, `ipad`, `watch`, `ios-marketing` and `all` for all iOS resolutions. Multiple device options are also possible. When not given, all resolutions get written.
+* **--devices**: Devices are `iphone`, `ipad`, `watch`, `ios-marketing` and `all` for all iOS resolutions. Multiple device options are also possible and should be seperated by comma. When not given, all resolutions get written.
 * **--badge**: Enables you to give a path to a badge image, which will be printed upon the app icon (e.g. a "Debug" badge)
 * **--targetPath**: The path that the folder structure and app icons will be written in. If no path is given by the user, icons get written into current path. 
 

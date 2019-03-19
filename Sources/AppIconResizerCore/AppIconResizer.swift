@@ -15,12 +15,13 @@ public final class AppIconResizer {
     public func run() throws {
         
         let resizingCommand = command(
-            VariadicOption("device", default: ["all"]),
+            Option<String>("devices", default: "all"),
             Option<String?>("badge", default: nil),
             Option("targetPath", default: FileManager.default.currentDirectoryPath),
             Argument<String>("inputPath")
-        ) { [weak self] idiomStrings, badgeFilePath, targetPath, filePath in
-            let idioms = Set(idiomStrings).map { idiomString -> Idiom in
+        ) { [weak self] idiomsString, badgeFilePath, targetPath, filePath in
+            let idioms = idiomsString.components(separatedBy: ",")
+                .map { idiomString -> Idiom in
                 guard let idiom = Idiom(rawValue: idiomString.lowercased()) else{
                     fatalError("\(idiomString) is an unknown value. Valid values are \(Idiom.allCases.map { $0.rawValue }.joined(separator: ", "))")
                 }
