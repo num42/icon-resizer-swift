@@ -11,14 +11,6 @@ AppIconResizer renders a given app icon png file into the different sizes Xcode 
 mint install num42/icon-resizer-swift
 ```
 
-## Make
-
-```shell
-git clone https://github.com/num42/icon-resizer-swift.git
-cd icon-resizer-swift
-make
-```
-
 # Usage
 ## Examples
 ```shell
