@@ -37,7 +37,7 @@ Options:
 
 * **--devices**: Devices are `iphone`, `ipad`, `watch`, `ios-marketing` and `all` for all iOS resolutions. Multiple devices need to be separated by comma. When not given, all resolutions get written.
 * **--badge**: Enables you to specify a path to a badge image, which will be rendered on top of the app icon (e.g. a "Debug" badge)
-* **--targetPath**: The path that the folder structure and app icons will be written in. If no path is given by the user, icons get written into current path. 
+* **--targetPath**: The path that the xcassets folder structure and app icons will be written to. If no path is given by the user, icons are written into the current path. 
 
 Arguments:
 
