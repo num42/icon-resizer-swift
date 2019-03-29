@@ -1,1139 +1,1220 @@
 // !$*UTF8*$!
 {
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXAggregateTarget section */
-		"AppIconResizer::AppIconResizerPackageTests::ProductTarget" /* AppIconResizerPackageTests */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = OBJ_73 /* Build configuration list for PBXAggregateTarget "AppIconResizerPackageTests" */;
-			buildPhases = (
-			);
-			dependencies = (
-				OBJ_76 /* PBXTargetDependency */,
-			);
-			name = AppIconResizerPackageTests;
-			productName = AppIconResizerPackageTests;
-		};
-		"AppIconResizer::icon-resizer::ProductTarget" /* icon-resizer */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = OBJ_125 /* Build configuration list for PBXAggregateTarget "icon-resizer" */;
-			buildPhases = (
-			);
-			dependencies = (
-				OBJ_128 /* PBXTargetDependency */,
-			);
-			name = "icon-resizer";
-			productName = "icon-resizer";
-		};
-/* End PBXAggregateTarget section */
-
-/* Begin PBXBuildFile section */
-		7148B2172232AAA000ED54FC /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148B2162232AAA000ED54FC /* DoubleExtensions.swift */; };
-		7148B2192232AB5500ED54FC /* CGImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148B2182232AB5500ED54FC /* CGImageExtensions.swift */; };
-		7148B21B2232AB6400ED54FC /* CIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148B21A2232AB6400ED54FC /* CIImageExtensions.swift */; };
-		7148B21D2232AC0300ED54FC /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148B21C2232AC0300ED54FC /* DataExtensions.swift */; };
-		7148B21F2232ACAD00ED54FC /* AppIconEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148B21E2232ACAD00ED54FC /* AppIconEntry.swift */; };
-		7148B2212232AD4900ED54FC /* ConvertibleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148B2202232AD4900ED54FC /* ConvertibleExtensions.swift */; };
-		716B0B012226DACD00C7A339 /* Idiom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B0B002226DACD00C7A339 /* Idiom.swift */; };
-		716B0B032226DAEF00C7A339 /* VirtualDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B0B022226DAEF00C7A339 /* VirtualDevice.swift */; };
-		OBJ_100 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* CommandRunner.swift */; };
-		OBJ_101 /* CommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* CommandType.swift */; };
-		OBJ_102 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* Commands.swift */; };
-		OBJ_103 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* Error.swift */; };
-		OBJ_104 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Group.swift */; };
-		OBJ_111 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* Package.swift */; };
-		OBJ_116 /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* Files.swift */; };
-		OBJ_123 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* Package.swift */; };
-		OBJ_45 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* main.swift */; };
-		OBJ_47 /* AppIconResizerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AppIconResizer::AppIconResizerCore::Product" /* AppIconResizerCore.framework */; };
-		OBJ_48 /* Commander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Commander::Commander::Product" /* Commander.framework */; };
-		OBJ_49 /* Files.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Files::Files::Product" /* Files.framework */; };
-		OBJ_60 /* AppIconResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* AppIconResizer.swift */; };
-		OBJ_62 /* Commander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Commander::Commander::Product" /* Commander.framework */; };
-		OBJ_63 /* Files.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Files::Files::Product" /* Files.framework */; };
-		OBJ_71 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_82 /* AppIconResizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* AppIconResizerTests.swift */; };
-		OBJ_83 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* XCTestManifests.swift */; };
-		OBJ_85 /* AppIconResizerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AppIconResizer::AppIconResizerCore::Product" /* AppIconResizerCore.framework */; };
-		OBJ_86 /* Commander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Commander::Commander::Product" /* Commander.framework */; };
-		OBJ_87 /* Files.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Files::Files::Product" /* Files.framework */; };
-		OBJ_96 /* ArgumentConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* ArgumentConvertible.swift */; };
-		OBJ_97 /* ArgumentDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* ArgumentDescription.swift */; };
-		OBJ_98 /* ArgumentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* ArgumentParser.swift */; };
-		OBJ_99 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Command.swift */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		716B0AF52226D1FA00C7A339 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Commander::Commander";
-			remoteInfo = Commander;
-		};
-		716B0AF62226D1FA00C7A339 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Files::Files";
-			remoteInfo = Files;
-		};
-		716B0AF72226D1FA00C7A339 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "AppIconResizer::AppIconResizerCore";
-			remoteInfo = AppIconResizerCore;
-		};
-		716B0AF82226D1FA00C7A339 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Commander::Commander";
-			remoteInfo = Commander;
-		};
-		716B0AF92226D1FA00C7A339 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Files::Files";
-			remoteInfo = Files;
-		};
-		716B0AFA2226D1FA00C7A339 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "AppIconResizer::AppIconResizer";
-			remoteInfo = AppIconResizer;
-		};
-		716B0AFB2226D1FA00C7A339 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "AppIconResizer::AppIconResizerCore";
-			remoteInfo = AppIconResizerCore;
-		};
-		716B0AFC2226D1FA00C7A339 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Commander::Commander";
-			remoteInfo = Commander;
-		};
-		716B0AFD2226D1FA00C7A339 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Files::Files";
-			remoteInfo = Files;
-		};
-		716B0AFE2226D1FC00C7A339 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "AppIconResizer::AppIconResizerTests";
-			remoteInfo = AppIconResizerTests;
-		};
-		716B0AFF2226D1FC00C7A339 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "AppIconResizer::AppIconResizer";
-			remoteInfo = AppIconResizer;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		7148B2162232AAA000ED54FC /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
-		7148B2182232AB5500ED54FC /* CGImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImageExtensions.swift; sourceTree = "<group>"; };
-		7148B21A2232AB6400ED54FC /* CIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIImageExtensions.swift; sourceTree = "<group>"; };
-		7148B21C2232AC0300ED54FC /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
-		7148B21E2232ACAD00ED54FC /* AppIconEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconEntry.swift; sourceTree = "<group>"; };
-		7148B2202232AD4900ED54FC /* ConvertibleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleExtensions.swift; sourceTree = "<group>"; };
-		716B0B002226DACD00C7A339 /* Idiom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Idiom.swift; sourceTree = "<group>"; };
-		716B0B022226DAEF00C7A339 /* VirtualDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualDevice.swift; sourceTree = "<group>"; };
-		"AppIconResizer::AppIconResizer::Product" /* AppIconResizer */ = {isa = PBXFileReference; lastKnownFileType = text; path = AppIconResizer; sourceTree = BUILT_PRODUCTS_DIR; };
-		"AppIconResizer::AppIconResizerCore::Product" /* AppIconResizerCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppIconResizerCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"AppIconResizer::AppIconResizerTests::Product" /* AppIconResizerTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppIconResizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		"Commander::Commander::Product" /* Commander.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Commander.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"Files::Files::Product" /* Files.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Files.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_11 /* AppIconResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconResizer.swift; sourceTree = "<group>"; };
-		OBJ_13 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		OBJ_16 /* AppIconResizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconResizerTests.swift; sourceTree = "<group>"; };
-		OBJ_17 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
-		OBJ_21 /* ArgumentConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgumentConvertible.swift; sourceTree = "<group>"; };
-		OBJ_22 /* ArgumentDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgumentDescription.swift; sourceTree = "<group>"; };
-		OBJ_23 /* ArgumentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgumentParser.swift; sourceTree = "<group>"; };
-		OBJ_24 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
-		OBJ_25 /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
-		OBJ_26 /* CommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandType.swift; sourceTree = "<group>"; };
-		OBJ_27 /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
-		OBJ_28 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		OBJ_29 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
-		OBJ_30 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/alexanderklauer/dev/AppIconResizer/.build/checkouts/Commander.git--2747661448298700407/Package.swift"; sourceTree = "<group>"; };
-		OBJ_32 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/alexanderklauer/dev/AppIconResizer/.build/checkouts/Files.git-1170802021967264899/Package.swift"; sourceTree = "<group>"; };
-		OBJ_33 /* Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
-		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_8 /* macos.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = macos.xcconfig; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		OBJ_105 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_117 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_46 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_47 /* AppIconResizerCore.framework in Frameworks */,
-				OBJ_48 /* Commander.framework in Frameworks */,
-				OBJ_49 /* Files.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_61 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_62 /* Commander.framework in Frameworks */,
-				OBJ_63 /* Files.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_84 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_85 /* AppIconResizerCore.framework in Frameworks */,
-				OBJ_86 /* Commander.framework in Frameworks */,
-				OBJ_87 /* Files.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		OBJ_10 /* AppIconResizerCore */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_11 /* AppIconResizer.swift */,
-				716B0B002226DACD00C7A339 /* Idiom.swift */,
-				716B0B022226DAEF00C7A339 /* VirtualDevice.swift */,
-				7148B2162232AAA000ED54FC /* DoubleExtensions.swift */,
-				7148B2182232AB5500ED54FC /* CGImageExtensions.swift */,
-				7148B21A2232AB6400ED54FC /* CIImageExtensions.swift */,
-				7148B21C2232AC0300ED54FC /* DataExtensions.swift */,
-				7148B21E2232ACAD00ED54FC /* AppIconEntry.swift */,
-				7148B2202232AD4900ED54FC /* ConvertibleExtensions.swift */,
-			);
-			name = AppIconResizerCore;
-			path = Sources/AppIconResizerCore;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_12 /* AppIconResizer */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_13 /* main.swift */,
-			);
-			name = AppIconResizer;
-			path = Sources/AppIconResizer;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_14 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_15 /* AppIconResizerTests */,
-			);
-			name = Tests;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_15 /* AppIconResizerTests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_16 /* AppIconResizerTests.swift */,
-				OBJ_17 /* XCTestManifests.swift */,
-			);
-			name = AppIconResizerTests;
-			path = Tests/AppIconResizerTests;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_18 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_19 /* Commander 0.8.0 */,
-				OBJ_31 /* Files 2.2.1 */,
-			);
-			name = Dependencies;
-			sourceTree = "<group>";
-		};
-		OBJ_19 /* Commander 0.8.0 */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_20 /* Commander */,
-				OBJ_30 /* Package.swift */,
-			);
-			name = "Commander 0.8.0";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_20 /* Commander */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_21 /* ArgumentConvertible.swift */,
-				OBJ_22 /* ArgumentDescription.swift */,
-				OBJ_23 /* ArgumentParser.swift */,
-				OBJ_24 /* Command.swift */,
-				OBJ_25 /* CommandRunner.swift */,
-				OBJ_26 /* CommandType.swift */,
-				OBJ_27 /* Commands.swift */,
-				OBJ_28 /* Error.swift */,
-				OBJ_29 /* Group.swift */,
-			);
-			name = Commander;
-			path = ".build/checkouts/Commander.git--2747661448298700407/Sources/Commander";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_31 /* Files 2.2.1 */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_32 /* Package.swift */,
-				OBJ_33 /* Files.swift */,
-			);
-			name = "Files 2.2.1";
-			path = ".build/checkouts/Files.git-1170802021967264899/Sources";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_34 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				"AppIconResizer::AppIconResizer::Product" /* AppIconResizer */,
-				"AppIconResizer::AppIconResizerTests::Product" /* AppIconResizerTests.xctest */,
-				"Commander::Commander::Product" /* Commander.framework */,
-				"Files::Files::Product" /* Files.framework */,
-				"AppIconResizer::AppIconResizerCore::Product" /* AppIconResizerCore.framework */,
-			);
-			name = Products;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		OBJ_5 = {
-			isa = PBXGroup;
-			children = (
-				OBJ_6 /* Package.swift */,
-				OBJ_7 /* Configs */,
-				OBJ_9 /* Sources */,
-				OBJ_14 /* Tests */,
-				OBJ_18 /* Dependencies */,
-				OBJ_34 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		OBJ_7 /* Configs */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_8 /* macos.xcconfig */,
-			);
-			name = Configs;
-			sourceTree = "<group>";
-		};
-		OBJ_9 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_10 /* AppIconResizerCore */,
-				OBJ_12 /* AppIconResizer */,
-			);
-			name = Sources;
-			sourceTree = SOURCE_ROOT;
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		"AppIconResizer::AppIconResizer" /* AppIconResizer */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_41 /* Build configuration list for PBXNativeTarget "AppIconResizer" */;
-			buildPhases = (
-				OBJ_44 /* Sources */,
-				OBJ_46 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				OBJ_50 /* PBXTargetDependency */,
-				OBJ_52 /* PBXTargetDependency */,
-				OBJ_54 /* PBXTargetDependency */,
-			);
-			name = AppIconResizer;
-			productName = AppIconResizer;
-			productReference = "AppIconResizer::AppIconResizer::Product" /* AppIconResizer */;
-			productType = "com.apple.product-type.tool";
-		};
-		"AppIconResizer::AppIconResizerCore" /* AppIconResizerCore */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_56 /* Build configuration list for PBXNativeTarget "AppIconResizerCore" */;
-			buildPhases = (
-				OBJ_59 /* Sources */,
-				OBJ_61 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				OBJ_64 /* PBXTargetDependency */,
-				OBJ_65 /* PBXTargetDependency */,
-			);
-			name = AppIconResizerCore;
-			productName = AppIconResizerCore;
-			productReference = "AppIconResizer::AppIconResizerCore::Product" /* AppIconResizerCore.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		"AppIconResizer::AppIconResizerTests" /* AppIconResizerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_78 /* Build configuration list for PBXNativeTarget "AppIconResizerTests" */;
-			buildPhases = (
-				OBJ_81 /* Sources */,
-				OBJ_84 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				OBJ_88 /* PBXTargetDependency */,
-				OBJ_89 /* PBXTargetDependency */,
-				OBJ_90 /* PBXTargetDependency */,
-				OBJ_91 /* PBXTargetDependency */,
-			);
-			name = AppIconResizerTests;
-			productName = AppIconResizerTests;
-			productReference = "AppIconResizer::AppIconResizerTests::Product" /* AppIconResizerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		"AppIconResizer::SwiftPMPackageDescription" /* AppIconResizerPackageDescription */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_67 /* Build configuration list for PBXNativeTarget "AppIconResizerPackageDescription" */;
-			buildPhases = (
-				OBJ_70 /* Sources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AppIconResizerPackageDescription;
-			productName = AppIconResizerPackageDescription;
-			productType = "com.apple.product-type.framework";
-		};
-		"Commander::Commander" /* Commander */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_92 /* Build configuration list for PBXNativeTarget "Commander" */;
-			buildPhases = (
-				OBJ_95 /* Sources */,
-				OBJ_105 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Commander;
-			productName = Commander;
-			productReference = "Commander::Commander::Product" /* Commander.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		"Commander::SwiftPMPackageDescription" /* CommanderPackageDescription */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_107 /* Build configuration list for PBXNativeTarget "CommanderPackageDescription" */;
-			buildPhases = (
-				OBJ_110 /* Sources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CommanderPackageDescription;
-			productName = CommanderPackageDescription;
-			productType = "com.apple.product-type.framework";
-		};
-		"Files::Files" /* Files */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_112 /* Build configuration list for PBXNativeTarget "Files" */;
-			buildPhases = (
-				OBJ_115 /* Sources */,
-				OBJ_117 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Files;
-			productName = Files;
-			productReference = "Files::Files::Product" /* Files.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		"Files::SwiftPMPackageDescription" /* FilesPackageDescription */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_119 /* Build configuration list for PBXNativeTarget "FilesPackageDescription" */;
-			buildPhases = (
-				OBJ_122 /* Sources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FilesPackageDescription;
-			productName = FilesPackageDescription;
-			productType = "com.apple.product-type.framework";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		OBJ_1 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 9999;
-			};
-			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "AppIconResizer" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = OBJ_5;
-			productRefGroup = OBJ_34 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				"AppIconResizer::AppIconResizer" /* AppIconResizer */,
-				"AppIconResizer::AppIconResizerCore" /* AppIconResizerCore */,
-				"AppIconResizer::SwiftPMPackageDescription" /* AppIconResizerPackageDescription */,
-				"AppIconResizer::AppIconResizerPackageTests::ProductTarget" /* AppIconResizerPackageTests */,
-				"AppIconResizer::AppIconResizerTests" /* AppIconResizerTests */,
-				"Commander::Commander" /* Commander */,
-				"Commander::SwiftPMPackageDescription" /* CommanderPackageDescription */,
-				"Files::Files" /* Files */,
-				"Files::SwiftPMPackageDescription" /* FilesPackageDescription */,
-				"AppIconResizer::icon-resizer::ProductTarget" /* icon-resizer */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXSourcesBuildPhase section */
-		OBJ_110 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_111 /* Package.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_115 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_116 /* Files.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_122 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_123 /* Package.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_44 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_45 /* main.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_59 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				7148B2172232AAA000ED54FC /* DoubleExtensions.swift in Sources */,
-				7148B21F2232ACAD00ED54FC /* AppIconEntry.swift in Sources */,
-				OBJ_60 /* AppIconResizer.swift in Sources */,
-				716B0B032226DAEF00C7A339 /* VirtualDevice.swift in Sources */,
-				7148B2212232AD4900ED54FC /* ConvertibleExtensions.swift in Sources */,
-				7148B21B2232AB6400ED54FC /* CIImageExtensions.swift in Sources */,
-				7148B21D2232AC0300ED54FC /* DataExtensions.swift in Sources */,
-				7148B2192232AB5500ED54FC /* CGImageExtensions.swift in Sources */,
-				716B0B012226DACD00C7A339 /* Idiom.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_70 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_71 /* Package.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_81 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_82 /* AppIconResizerTests.swift in Sources */,
-				OBJ_83 /* XCTestManifests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_95 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_96 /* ArgumentConvertible.swift in Sources */,
-				OBJ_97 /* ArgumentDescription.swift in Sources */,
-				OBJ_98 /* ArgumentParser.swift in Sources */,
-				OBJ_99 /* Command.swift in Sources */,
-				OBJ_100 /* CommandRunner.swift in Sources */,
-				OBJ_101 /* CommandType.swift in Sources */,
-				OBJ_102 /* Commands.swift in Sources */,
-				OBJ_103 /* Error.swift in Sources */,
-				OBJ_104 /* Group.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		OBJ_128 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "AppIconResizer::AppIconResizer" /* AppIconResizer */;
-			targetProxy = 716B0AFF2226D1FC00C7A339 /* PBXContainerItemProxy */;
-		};
-		OBJ_50 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "AppIconResizer::AppIconResizerCore" /* AppIconResizerCore */;
-			targetProxy = 716B0AF72226D1FA00C7A339 /* PBXContainerItemProxy */;
-		};
-		OBJ_52 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "Commander::Commander" /* Commander */;
-			targetProxy = 716B0AF82226D1FA00C7A339 /* PBXContainerItemProxy */;
-		};
-		OBJ_54 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "Files::Files" /* Files */;
-			targetProxy = 716B0AF92226D1FA00C7A339 /* PBXContainerItemProxy */;
-		};
-		OBJ_64 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "Commander::Commander" /* Commander */;
-			targetProxy = 716B0AF52226D1FA00C7A339 /* PBXContainerItemProxy */;
-		};
-		OBJ_65 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "Files::Files" /* Files */;
-			targetProxy = 716B0AF62226D1FA00C7A339 /* PBXContainerItemProxy */;
-		};
-		OBJ_76 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "AppIconResizer::AppIconResizerTests" /* AppIconResizerTests */;
-			targetProxy = 716B0AFE2226D1FC00C7A339 /* PBXContainerItemProxy */;
-		};
-		OBJ_88 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "AppIconResizer::AppIconResizer" /* AppIconResizer */;
-			targetProxy = 716B0AFA2226D1FA00C7A339 /* PBXContainerItemProxy */;
-		};
-		OBJ_89 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "AppIconResizer::AppIconResizerCore" /* AppIconResizerCore */;
-			targetProxy = 716B0AFB2226D1FA00C7A339 /* PBXContainerItemProxy */;
-		};
-		OBJ_90 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "Commander::Commander" /* Commander */;
-			targetProxy = 716B0AFC2226D1FA00C7A339 /* PBXContainerItemProxy */;
-		};
-		OBJ_91 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "Files::Files" /* Files */;
-			targetProxy = 716B0AFD2226D1FA00C7A339 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin XCBuildConfiguration section */
-		OBJ_108 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		OBJ_109 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		OBJ_113 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* macos.xcconfig */;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = AppIconResizer.xcodeproj/Files_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = Files;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
-				TARGET_NAME = Files;
-			};
-			name = Debug;
-		};
-		OBJ_114 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* macos.xcconfig */;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = AppIconResizer.xcodeproj/Files_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = Files;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
-				TARGET_NAME = Files;
-			};
-			name = Release;
-		};
-		OBJ_120 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		OBJ_121 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		OBJ_126 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Debug;
-		};
-		OBJ_127 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Release;
-		};
-		OBJ_3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_NS_ASSERTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "SWIFT_PACKAGE DEBUG";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				USE_HEADERMAP = NO;
-			};
-			name = Debug;
-		};
-		OBJ_4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_OPTIMIZATION_LEVEL = s;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				USE_HEADERMAP = NO;
-			};
-			name = Release;
-		};
-		OBJ_42 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* macos.xcconfig */;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = AppIconResizer.xcodeproj/AppIconResizer_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
-				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
-				SWIFT_VERSION = 4.2;
-				TARGET_NAME = AppIconResizer;
-			};
-			name = Debug;
-		};
-		OBJ_43 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* macos.xcconfig */;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = AppIconResizer.xcodeproj/AppIconResizer_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
-				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
-				SWIFT_VERSION = 4.2;
-				TARGET_NAME = AppIconResizer;
-			};
-			name = Release;
-		};
-		OBJ_57 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* macos.xcconfig */;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = AppIconResizer.xcodeproj/AppIconResizerCore_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = AppIconResizerCore;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
-				TARGET_NAME = AppIconResizerCore;
-			};
-			name = Debug;
-		};
-		OBJ_58 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* macos.xcconfig */;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = AppIconResizer.xcodeproj/AppIconResizerCore_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = AppIconResizerCore;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
-				TARGET_NAME = AppIconResizerCore;
-			};
-			name = Release;
-		};
-		OBJ_68 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4.2 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 4.2;
-			};
-			name = Debug;
-		};
-		OBJ_69 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4.2 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 4.2;
-			};
-			name = Release;
-		};
-		OBJ_74 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Debug;
-		};
-		OBJ_75 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Release;
-		};
-		OBJ_79 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* macos.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = AppIconResizer.xcodeproj/AppIconResizerTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
-				TARGET_NAME = AppIconResizerTests;
-			};
-			name = Debug;
-		};
-		OBJ_80 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* macos.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = AppIconResizer.xcodeproj/AppIconResizerTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
-				TARGET_NAME = AppIconResizerTests;
-			};
-			name = Release;
-		};
-		OBJ_93 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* macos.xcconfig */;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = AppIconResizer.xcodeproj/Commander_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = Commander;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
-				TARGET_NAME = Commander;
-			};
-			name = Debug;
-		};
-		OBJ_94 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* macos.xcconfig */;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = AppIconResizer.xcodeproj/Commander_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = Commander;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
-				TARGET_NAME = Commander;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		OBJ_107 /* Build configuration list for PBXNativeTarget "CommanderPackageDescription" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_108 /* Debug */,
-				OBJ_109 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_112 /* Build configuration list for PBXNativeTarget "Files" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_113 /* Debug */,
-				OBJ_114 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_119 /* Build configuration list for PBXNativeTarget "FilesPackageDescription" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_120 /* Debug */,
-				OBJ_121 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_125 /* Build configuration list for PBXAggregateTarget "icon-resizer" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_126 /* Debug */,
-				OBJ_127 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_2 /* Build configuration list for PBXProject "AppIconResizer" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_3 /* Debug */,
-				OBJ_4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_41 /* Build configuration list for PBXNativeTarget "AppIconResizer" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_42 /* Debug */,
-				OBJ_43 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_56 /* Build configuration list for PBXNativeTarget "AppIconResizerCore" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_57 /* Debug */,
-				OBJ_58 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_67 /* Build configuration list for PBXNativeTarget "AppIconResizerPackageDescription" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_68 /* Debug */,
-				OBJ_69 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_73 /* Build configuration list for PBXAggregateTarget "AppIconResizerPackageTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_74 /* Debug */,
-				OBJ_75 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_78 /* Build configuration list for PBXNativeTarget "AppIconResizerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_79 /* Debug */,
-				OBJ_80 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_92 /* Build configuration list for PBXNativeTarget "Commander" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_93 /* Debug */,
-				OBJ_94 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = OBJ_1 /* Project object */;
+   archiveVersion = "1";
+   objectVersion = "46";
+   objects = {
+      "AppIconResizer::AppIconResizer" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_51";
+         buildPhases = (
+            "OBJ_54",
+            "OBJ_56"
+         );
+         dependencies = (
+            "OBJ_59",
+            "OBJ_61"
+         );
+         name = "AppIconResizer";
+         productName = "AppIconResizer";
+         productReference = "AppIconResizer::AppIconResizer::Product";
+         productType = "com.apple.product-type.tool";
+      };
+      "AppIconResizer::AppIconResizer::Product" = {
+         isa = "PBXFileReference";
+         path = "AppIconResizer";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "AppIconResizer::AppIconResizerCore" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_63";
+         buildPhases = (
+            "OBJ_66",
+            "OBJ_76"
+         );
+         dependencies = (
+            "OBJ_78"
+         );
+         name = "AppIconResizerCore";
+         productName = "AppIconResizerCore";
+         productReference = "AppIconResizer::AppIconResizerCore::Product";
+         productType = "com.apple.product-type.framework";
+      };
+      "AppIconResizer::AppIconResizerCore::Product" = {
+         isa = "PBXFileReference";
+         path = "AppIconResizerCore.framework";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "AppIconResizer::AppIconResizerPackageTests::ProductTarget" = {
+         isa = "PBXAggregateTarget";
+         buildConfigurationList = "OBJ_86";
+         buildPhases = (
+         );
+         dependencies = (
+            "OBJ_89"
+         );
+         name = "AppIconResizerPackageTests";
+         productName = "AppIconResizerPackageTests";
+      };
+      "AppIconResizer::AppIconResizerTests" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_91";
+         buildPhases = (
+            "OBJ_94",
+            "OBJ_97"
+         );
+         dependencies = (
+            "OBJ_100",
+            "OBJ_101",
+            "OBJ_102"
+         );
+         name = "AppIconResizerTests";
+         productName = "AppIconResizerTests";
+         productReference = "AppIconResizer::AppIconResizerTests::Product";
+         productType = "com.apple.product-type.bundle.unit-test";
+      };
+      "AppIconResizer::AppIconResizerTests::Product" = {
+         isa = "PBXFileReference";
+         path = "AppIconResizerTests.xctest";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "AppIconResizer::SwiftPMPackageDescription" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_80";
+         buildPhases = (
+            "OBJ_83"
+         );
+         dependencies = (
+         );
+         name = "AppIconResizerPackageDescription";
+         productName = "AppIconResizerPackageDescription";
+         productType = "com.apple.product-type.framework";
+      };
+      "AppIconResizer::icon-resizer::ProductTarget" = {
+         isa = "PBXAggregateTarget";
+         buildConfigurationList = "OBJ_124";
+         buildPhases = (
+         );
+         dependencies = (
+            "OBJ_127"
+         );
+         name = "icon-resizer";
+         productName = "icon-resizer";
+      };
+      "Commander::Commander" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_103";
+         buildPhases = (
+            "OBJ_106",
+            "OBJ_116"
+         );
+         dependencies = (
+         );
+         name = "Commander";
+         productName = "Commander";
+         productReference = "Commander::Commander::Product";
+         productType = "com.apple.product-type.framework";
+      };
+      "Commander::Commander::Product" = {
+         isa = "PBXFileReference";
+         path = "Commander.framework";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "Commander::SwiftPMPackageDescription" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_118";
+         buildPhases = (
+            "OBJ_121"
+         );
+         dependencies = (
+         );
+         name = "CommanderPackageDescription";
+         productName = "CommanderPackageDescription";
+         productType = "com.apple.product-type.framework";
+      };
+      "OBJ_1" = {
+         isa = "PBXProject";
+         attributes = {
+            LastSwiftMigration = "9999";
+            LastUpgradeCheck = "9999";
+         };
+         buildConfigurationList = "OBJ_2";
+         compatibilityVersion = "Xcode 3.2";
+         developmentRegion = "English";
+         hasScannedForEncodings = "0";
+         knownRegions = (
+            "en"
+         );
+         mainGroup = "OBJ_5";
+         productRefGroup = "OBJ_39";
+         projectDirPath = ".";
+         targets = (
+            "AppIconResizer::AppIconResizer",
+            "AppIconResizer::AppIconResizerCore",
+            "AppIconResizer::SwiftPMPackageDescription",
+            "AppIconResizer::AppIconResizerPackageTests::ProductTarget",
+            "AppIconResizer::AppIconResizerTests",
+            "Commander::Commander",
+            "Commander::SwiftPMPackageDescription",
+            "AppIconResizer::icon-resizer::ProductTarget"
+         );
+      };
+      "OBJ_10" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_11"
+         );
+         name = "AppIconResizer";
+         path = "Sources/AppIconResizer";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_100" = {
+         isa = "PBXTargetDependency";
+         target = "AppIconResizer::AppIconResizer";
+      };
+      "OBJ_101" = {
+         isa = "PBXTargetDependency";
+         target = "AppIconResizer::AppIconResizerCore";
+      };
+      "OBJ_102" = {
+         isa = "PBXTargetDependency";
+         target = "Commander::Commander";
+      };
+      "OBJ_103" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_104",
+            "OBJ_105"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_104" = {
+         isa = "XCBuildConfiguration";
+         baseConfigurationReference = "OBJ_8";
+         buildSettings = {
+            ENABLE_TESTABILITY = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)"
+            );
+            INFOPLIST_FILE = "AppIconResizer.xcodeproj/Commander_Info.plist";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+            );
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            PRODUCT_BUNDLE_IDENTIFIER = "Commander";
+            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+            SKIP_INSTALL = "YES";
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "4.0";
+            TARGET_NAME = "Commander";
+         };
+         name = "Debug";
+      };
+      "OBJ_105" = {
+         isa = "XCBuildConfiguration";
+         baseConfigurationReference = "OBJ_8";
+         buildSettings = {
+            ENABLE_TESTABILITY = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)"
+            );
+            INFOPLIST_FILE = "AppIconResizer.xcodeproj/Commander_Info.plist";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+            );
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            PRODUCT_BUNDLE_IDENTIFIER = "Commander";
+            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+            SKIP_INSTALL = "YES";
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "4.0";
+            TARGET_NAME = "Commander";
+         };
+         name = "Release";
+      };
+      "OBJ_106" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_107",
+            "OBJ_108",
+            "OBJ_109",
+            "OBJ_110",
+            "OBJ_111",
+            "OBJ_112",
+            "OBJ_113",
+            "OBJ_114",
+            "OBJ_115"
+         );
+      };
+      "OBJ_107" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_29";
+      };
+      "OBJ_108" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_30";
+      };
+      "OBJ_109" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_31";
+      };
+      "OBJ_11" = {
+         isa = "PBXFileReference";
+         path = "main.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_110" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_32";
+      };
+      "OBJ_111" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_33";
+      };
+      "OBJ_112" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_34";
+      };
+      "OBJ_113" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_35";
+      };
+      "OBJ_114" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_36";
+      };
+      "OBJ_115" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_37";
+      };
+      "OBJ_116" = {
+         isa = "PBXFrameworksBuildPhase";
+         files = (
+         );
+      };
+      "OBJ_118" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_119",
+            "OBJ_120"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_119" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            LD = "/usr/bin/true";
+            OTHER_SWIFT_FLAGS = (
+               "-swift-version",
+               "4",
+               "-I",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4",
+               "-target",
+               "x86_64-apple-macosx10.10",
+               "-sdk",
+               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk"
+            );
+            SWIFT_VERSION = "4.0";
+         };
+         name = "Debug";
+      };
+      "OBJ_12" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_13",
+            "OBJ_14",
+            "OBJ_15",
+            "OBJ_16",
+            "OBJ_17",
+            "OBJ_18",
+            "OBJ_19",
+            "OBJ_20",
+            "OBJ_21"
+         );
+         name = "AppIconResizerCore";
+         path = "Sources/AppIconResizerCore";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_120" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            LD = "/usr/bin/true";
+            OTHER_SWIFT_FLAGS = (
+               "-swift-version",
+               "4",
+               "-I",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4",
+               "-target",
+               "x86_64-apple-macosx10.10",
+               "-sdk",
+               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk"
+            );
+            SWIFT_VERSION = "4.0";
+         };
+         name = "Release";
+      };
+      "OBJ_121" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_122"
+         );
+      };
+      "OBJ_122" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_38";
+      };
+      "OBJ_124" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_125",
+            "OBJ_126"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_125" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+         };
+         name = "Debug";
+      };
+      "OBJ_126" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+         };
+         name = "Release";
+      };
+      "OBJ_127" = {
+         isa = "PBXTargetDependency";
+         target = "AppIconResizer::AppIconResizer";
+      };
+      "OBJ_13" = {
+         isa = "PBXFileReference";
+         path = "AppIconEntry.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_14" = {
+         isa = "PBXFileReference";
+         path = "AppIconResizer.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_15" = {
+         isa = "PBXFileReference";
+         path = "CGImageExtensions.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_16" = {
+         isa = "PBXFileReference";
+         path = "CIImageExtensions.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_17" = {
+         isa = "PBXFileReference";
+         path = "ConvertibleExtensions.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_18" = {
+         isa = "PBXFileReference";
+         path = "DataExtensions.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_19" = {
+         isa = "PBXFileReference";
+         path = "DoubleExtensions.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_2" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_3",
+            "OBJ_4"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_20" = {
+         isa = "PBXFileReference";
+         path = "Idiom.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_21" = {
+         isa = "PBXFileReference";
+         path = "VirtualDevice.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_22" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_23"
+         );
+         name = "Tests";
+         path = "";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_23" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_24",
+            "OBJ_25"
+         );
+         name = "AppIconResizerTests";
+         path = "Tests/AppIconResizerTests";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_24" = {
+         isa = "PBXFileReference";
+         path = "AppIconResizerTests.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_25" = {
+         isa = "PBXFileReference";
+         path = "XCTestManifests.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_26" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_27"
+         );
+         name = "Dependencies";
+         path = "";
+         sourceTree = "<group>";
+      };
+      "OBJ_27" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_28",
+            "OBJ_38"
+         );
+         name = "Commander 0.8.0";
+         path = "";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_28" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_29",
+            "OBJ_30",
+            "OBJ_31",
+            "OBJ_32",
+            "OBJ_33",
+            "OBJ_34",
+            "OBJ_35",
+            "OBJ_36",
+            "OBJ_37"
+         );
+         name = "Commander";
+         path = ".build/checkouts/Commander.git--1216578231832484623/Sources/Commander";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_29" = {
+         isa = "PBXFileReference";
+         path = "ArgumentConvertible.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_3" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            CLANG_ENABLE_OBJC_ARC = "YES";
+            COMBINE_HIDPI_IMAGES = "YES";
+            COPY_PHASE_STRIP = "NO";
+            DEBUG_INFORMATION_FORMAT = "dwarf";
+            DYLIB_INSTALL_NAME_BASE = "@rpath";
+            ENABLE_NS_ASSERTIONS = "YES";
+            GCC_OPTIMIZATION_LEVEL = "0";
+            GCC_PREPROCESSOR_DEFINITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE=1",
+               "DEBUG=1"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            ONLY_ACTIVE_ARCH = "YES";
+            OTHER_SWIFT_FLAGS = (
+               "-DXcode"
+            );
+            PRODUCT_NAME = "$(TARGET_NAME)";
+            SDKROOT = "macosx";
+            SUPPORTED_PLATFORMS = (
+               "macosx",
+               "iphoneos",
+               "iphonesimulator",
+               "appletvos",
+               "appletvsimulator",
+               "watchos",
+               "watchsimulator"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE",
+               "DEBUG"
+            );
+            SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+            USE_HEADERMAP = "NO";
+         };
+         name = "Debug";
+      };
+      "OBJ_30" = {
+         isa = "PBXFileReference";
+         path = "ArgumentDescription.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_31" = {
+         isa = "PBXFileReference";
+         path = "ArgumentParser.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_32" = {
+         isa = "PBXFileReference";
+         path = "Command.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_33" = {
+         isa = "PBXFileReference";
+         path = "CommandRunner.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_34" = {
+         isa = "PBXFileReference";
+         path = "CommandType.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_35" = {
+         isa = "PBXFileReference";
+         path = "Commands.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_36" = {
+         isa = "PBXFileReference";
+         path = "Error.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_37" = {
+         isa = "PBXFileReference";
+         path = "Group.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_38" = {
+         isa = "PBXFileReference";
+         explicitFileType = "sourcecode.swift";
+         name = "Package.swift";
+         path = "/Users/admin/dev/Tools/icon-resizer-swift/.build/checkouts/Commander.git--1216578231832484623/Package.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_39" = {
+         isa = "PBXGroup";
+         children = (
+            "AppIconResizer::AppIconResizer::Product",
+            "AppIconResizer::AppIconResizerCore::Product",
+            "Commander::Commander::Product",
+            "AppIconResizer::AppIconResizerTests::Product"
+         );
+         name = "Products";
+         path = "";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "OBJ_4" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            CLANG_ENABLE_OBJC_ARC = "YES";
+            COMBINE_HIDPI_IMAGES = "YES";
+            COPY_PHASE_STRIP = "YES";
+            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+            DYLIB_INSTALL_NAME_BASE = "@rpath";
+            GCC_OPTIMIZATION_LEVEL = "s";
+            GCC_PREPROCESSOR_DEFINITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE=1"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_SWIFT_FLAGS = (
+               "-DXcode"
+            );
+            PRODUCT_NAME = "$(TARGET_NAME)";
+            SDKROOT = "macosx";
+            SUPPORTED_PLATFORMS = (
+               "macosx",
+               "iphoneos",
+               "iphonesimulator",
+               "appletvos",
+               "appletvsimulator",
+               "watchos",
+               "watchsimulator"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE"
+            );
+            SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+            USE_HEADERMAP = "NO";
+         };
+         name = "Release";
+      };
+      "OBJ_44" = {
+         isa = "PBXFileReference";
+         path = "Mintfile";
+         sourceTree = "<group>";
+      };
+      "OBJ_45" = {
+         isa = "PBXFileReference";
+         path = "lintAndFormat.sh";
+         sourceTree = "<group>";
+      };
+      "OBJ_46" = {
+         isa = "PBXFileReference";
+         path = "macos.xcconfig";
+         sourceTree = "<group>";
+      };
+      "OBJ_47" = {
+         isa = "PBXFileReference";
+         path = "README.md";
+         sourceTree = "<group>";
+      };
+      "OBJ_48" = {
+         isa = "PBXFileReference";
+         path = "bootstrap.sh";
+         sourceTree = "<group>";
+      };
+      "OBJ_49" = {
+         isa = "PBXFileReference";
+         path = "license.txt";
+         sourceTree = "<group>";
+      };
+      "OBJ_5" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_6",
+            "OBJ_7",
+            "OBJ_9",
+            "OBJ_22",
+            "OBJ_26",
+            "OBJ_39",
+            "OBJ_44",
+            "OBJ_45",
+            "OBJ_46",
+            "OBJ_47",
+            "OBJ_48",
+            "OBJ_49"
+         );
+         path = "";
+         sourceTree = "<group>";
+      };
+      "OBJ_51" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_52",
+            "OBJ_53"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_52" = {
+         isa = "XCBuildConfiguration";
+         baseConfigurationReference = "OBJ_8";
+         buildSettings = {
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)"
+            );
+            INFOPLIST_FILE = "AppIconResizer.xcodeproj/AppIconResizer_Info.plist";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+               "@executable_path"
+            );
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_FORCE_DYNAMIC_LINK_STDLIB = "YES";
+            SWIFT_FORCE_STATIC_LINK_STDLIB = "NO";
+            SWIFT_VERSION = "4.2";
+            TARGET_NAME = "AppIconResizer";
+         };
+         name = "Debug";
+      };
+      "OBJ_53" = {
+         isa = "XCBuildConfiguration";
+         baseConfigurationReference = "OBJ_8";
+         buildSettings = {
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)"
+            );
+            INFOPLIST_FILE = "AppIconResizer.xcodeproj/AppIconResizer_Info.plist";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+               "@executable_path"
+            );
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_FORCE_DYNAMIC_LINK_STDLIB = "YES";
+            SWIFT_FORCE_STATIC_LINK_STDLIB = "NO";
+            SWIFT_VERSION = "4.2";
+            TARGET_NAME = "AppIconResizer";
+         };
+         name = "Release";
+      };
+      "OBJ_54" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_55"
+         );
+      };
+      "OBJ_55" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_11";
+      };
+      "OBJ_56" = {
+         isa = "PBXFrameworksBuildPhase";
+         files = (
+            "OBJ_57",
+            "OBJ_58"
+         );
+      };
+      "OBJ_57" = {
+         isa = "PBXBuildFile";
+         fileRef = "AppIconResizer::AppIconResizerCore::Product";
+      };
+      "OBJ_58" = {
+         isa = "PBXBuildFile";
+         fileRef = "Commander::Commander::Product";
+      };
+      "OBJ_59" = {
+         isa = "PBXTargetDependency";
+         target = "AppIconResizer::AppIconResizerCore";
+      };
+      "OBJ_6" = {
+         isa = "PBXFileReference";
+         explicitFileType = "sourcecode.swift";
+         path = "Package.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_61" = {
+         isa = "PBXTargetDependency";
+         target = "Commander::Commander";
+      };
+      "OBJ_63" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_64",
+            "OBJ_65"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_64" = {
+         isa = "XCBuildConfiguration";
+         baseConfigurationReference = "OBJ_8";
+         buildSettings = {
+            ENABLE_TESTABILITY = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)"
+            );
+            INFOPLIST_FILE = "AppIconResizer.xcodeproj/AppIconResizerCore_Info.plist";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+            );
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            PRODUCT_BUNDLE_IDENTIFIER = "AppIconResizerCore";
+            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+            SKIP_INSTALL = "YES";
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "4.2";
+            TARGET_NAME = "AppIconResizerCore";
+         };
+         name = "Debug";
+      };
+      "OBJ_65" = {
+         isa = "XCBuildConfiguration";
+         baseConfigurationReference = "OBJ_8";
+         buildSettings = {
+            ENABLE_TESTABILITY = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)"
+            );
+            INFOPLIST_FILE = "AppIconResizer.xcodeproj/AppIconResizerCore_Info.plist";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+            );
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            PRODUCT_BUNDLE_IDENTIFIER = "AppIconResizerCore";
+            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+            SKIP_INSTALL = "YES";
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "4.2";
+            TARGET_NAME = "AppIconResizerCore";
+         };
+         name = "Release";
+      };
+      "OBJ_66" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_67",
+            "OBJ_68",
+            "OBJ_69",
+            "OBJ_70",
+            "OBJ_71",
+            "OBJ_72",
+            "OBJ_73",
+            "OBJ_74",
+            "OBJ_75"
+         );
+      };
+      "OBJ_67" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_13";
+      };
+      "OBJ_68" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_14";
+      };
+      "OBJ_69" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_15";
+      };
+      "OBJ_7" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_8"
+         );
+         name = "Configs";
+         path = "";
+         sourceTree = "<group>";
+      };
+      "OBJ_70" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_16";
+      };
+      "OBJ_71" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_17";
+      };
+      "OBJ_72" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_18";
+      };
+      "OBJ_73" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_19";
+      };
+      "OBJ_74" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_20";
+      };
+      "OBJ_75" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_21";
+      };
+      "OBJ_76" = {
+         isa = "PBXFrameworksBuildPhase";
+         files = (
+            "OBJ_77"
+         );
+      };
+      "OBJ_77" = {
+         isa = "PBXBuildFile";
+         fileRef = "Commander::Commander::Product";
+      };
+      "OBJ_78" = {
+         isa = "PBXTargetDependency";
+         target = "Commander::Commander";
+      };
+      "OBJ_8" = {
+         isa = "PBXFileReference";
+         path = "macos.xcconfig";
+         sourceTree = "<group>";
+      };
+      "OBJ_80" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_81",
+            "OBJ_82"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_81" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            LD = "/usr/bin/true";
+            OTHER_SWIFT_FLAGS = (
+               "-swift-version",
+               "4.2",
+               "-I",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
+               "-target",
+               "x86_64-apple-macosx10.10",
+               "-sdk",
+               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk"
+            );
+            SWIFT_VERSION = "4.2";
+         };
+         name = "Debug";
+      };
+      "OBJ_82" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            LD = "/usr/bin/true";
+            OTHER_SWIFT_FLAGS = (
+               "-swift-version",
+               "4.2",
+               "-I",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
+               "-target",
+               "x86_64-apple-macosx10.10",
+               "-sdk",
+               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk"
+            );
+            SWIFT_VERSION = "4.2";
+         };
+         name = "Release";
+      };
+      "OBJ_83" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_84"
+         );
+      };
+      "OBJ_84" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_6";
+      };
+      "OBJ_86" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_87",
+            "OBJ_88"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_87" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+         };
+         name = "Debug";
+      };
+      "OBJ_88" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+         };
+         name = "Release";
+      };
+      "OBJ_89" = {
+         isa = "PBXTargetDependency";
+         target = "AppIconResizer::AppIconResizerTests";
+      };
+      "OBJ_9" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_10",
+            "OBJ_12"
+         );
+         name = "Sources";
+         path = "";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_91" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_92",
+            "OBJ_93"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_92" = {
+         isa = "XCBuildConfiguration";
+         baseConfigurationReference = "OBJ_8";
+         buildSettings = {
+            CLANG_ENABLE_MODULES = "YES";
+            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)"
+            );
+            INFOPLIST_FILE = "AppIconResizer.xcodeproj/AppIconResizerTests_Info.plist";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "@loader_path/../Frameworks",
+               "@loader_path/Frameworks"
+            );
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "4.2";
+            TARGET_NAME = "AppIconResizerTests";
+         };
+         name = "Debug";
+      };
+      "OBJ_93" = {
+         isa = "XCBuildConfiguration";
+         baseConfigurationReference = "OBJ_8";
+         buildSettings = {
+            CLANG_ENABLE_MODULES = "YES";
+            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)"
+            );
+            INFOPLIST_FILE = "AppIconResizer.xcodeproj/AppIconResizerTests_Info.plist";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "@loader_path/../Frameworks",
+               "@loader_path/Frameworks"
+            );
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "4.2";
+            TARGET_NAME = "AppIconResizerTests";
+         };
+         name = "Release";
+      };
+      "OBJ_94" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_95",
+            "OBJ_96"
+         );
+      };
+      "OBJ_95" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_24";
+      };
+      "OBJ_96" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_25";
+      };
+      "OBJ_97" = {
+         isa = "PBXFrameworksBuildPhase";
+         files = (
+            "OBJ_98",
+            "OBJ_99"
+         );
+      };
+      "OBJ_98" = {
+         isa = "PBXBuildFile";
+         fileRef = "AppIconResizer::AppIconResizerCore::Product";
+      };
+      "OBJ_99" = {
+         isa = "PBXBuildFile";
+         fileRef = "Commander::Commander::Product";
+      };
+   };
+   rootObject = "OBJ_1";
 }
