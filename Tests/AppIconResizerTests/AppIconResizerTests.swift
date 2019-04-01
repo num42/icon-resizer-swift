@@ -5,6 +5,8 @@ import class Foundation.Bundle
 final class AppIconResizerTests: XCTestCase {
     
     func testDeviceSizes() {
+        XCTAssert( Idiom.all.appIconEntries == Idiom.all.appIconEntries )
+        
         XCTAssert(
             Idiom.iphone.appIconEntries == [
                 AppIconEntry(
