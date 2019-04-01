@@ -1,6 +1,10 @@
 import CoreImage
 
-struct AppIconEntry: Encodable, Hashable {
+struct AppIconEntry: Encodable, Hashable, Comparable {
+    static func < (lhs: AppIconEntry, rhs: AppIconEntry) -> Bool {
+        return lhs.size < rhs.size
+    }
+    
     let size: CGFloat
     let idiom: String
     let scale: Int
