@@ -72,12 +72,12 @@ public final class AppIconResizer {
         
         // Get app icon entries
         let appIconEntriesWithDuplicates = idioms.flatMap { $0.appIconEntries }
-        let appIconEntries = Array(Set<AppIconEntry>(appIconEntriesWithDuplicates).sorted(by: <))
+        let appIconEntries = Array(Set<AppIconEntry>(appIconEntriesWithDuplicates))
         
         // Write app icon entries to contents json
         let info = Info(version: 1, author: "AppIconResizer")
         let outerContents = AppIconSetContents(iconEntries: nil, info: info)
-        let contents = AppIconSetContents(iconEntries: appIconEntries, info: info)
+        let contents = AppIconSetContents(iconEntries: appIconEntries.sorted(), info: info)
         do {
             let jsonData = try JSONEncoder().encode(contents)
             let jsonInfoData = try JSONEncoder().encode(outerContents)

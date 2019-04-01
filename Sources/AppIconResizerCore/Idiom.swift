@@ -38,10 +38,7 @@ public enum Idiom: String, CaseIterable {
     }
     
     var appIconEntries: [AppIconEntry] {
-        return Array(virtualDevices.map { $0.appIconEntries }.joined()).sorted(by: {
-            // Sort order is idiom, scale, size
-            $0.idiom < $1.idiom || $0.scale < $1.scale || $0.size < $1.size
-        })
+        return Array(virtualDevices.map { $0.appIconEntries }.joined()).sorted()
     }    
     
 }
