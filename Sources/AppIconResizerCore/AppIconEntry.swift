@@ -9,6 +9,7 @@ struct AppIconEntry: Encodable, Hashable, Comparable {
         if lhs.scale != rhs.scale {
             return lhs.scale < rhs.scale
         }
+        
         return lhs.size < rhs.size
     }
     
