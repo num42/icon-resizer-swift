@@ -15,10 +15,10 @@ public final class AppIconResizer {
     public func run() throws {
         
         let resizingCommand = command(
-            Option<String>("devices", default: "all"),
-            Option<String?>("badge", default: nil),
-            Option("targetPath", default: FileManager.default.currentDirectoryPath),
-            Argument<String>("inputPath")
+            Option<String>("devices", default: "all", description: "The devices you need app icons for. Valid devices are iphone, ipad, watch and marketing. Use multiple devices by seperating them with a comma."),
+            Option<String?>("badge", default: nil, description: "Use this if you want a badge rendered on top of your app icon. Just give the path to the badge PNG."),
+            Option("targetPath", default: FileManager.default.currentDirectoryPath, description: "The path that the xcassets folder structure and app icons will be written to. If no path is given by the user, icons are written into the current path."),
+            Argument<String>("inputPath", description: "The path of your input app icon.")
         ) { [weak self] idiomsString, badgeFilePath, targetPath, filePath in
             let idioms = idiomsString.components(separatedBy: ",")
                 .map { idiomString -> Idiom in
