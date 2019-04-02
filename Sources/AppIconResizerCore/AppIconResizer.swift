@@ -51,7 +51,17 @@ public final class AppIconResizer {
             try self?.render(idioms: idioms, inputFileURL: inputFileURL, targetPath: targetPath, badgeFileURL: badgeFileURL)
         }
         
-        resizingCommand.run()
+        // Strange way to make commander show the help
+        if arguments.count <= 1 {
+            do {
+                try resizingCommand.run(["--help"])
+            } catch let error {
+                print(error)
+            }
+        } else {
+            resizingCommand.run()
+        }
+
     }
 
     public func render(idioms: [Idiom], inputFileURL: URL, targetPath: String, badgeFileURL: URL?) throws {
