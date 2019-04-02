@@ -1,7 +1,9 @@
 # AppIconResizer
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-AppIconResizer renders a given app icon png file into the different sizes Xcode needs for iOS projects in pure Swift, with no special dependencies on external tools. It also generates the required folder structure and json files. 
+AppIconResizer renders a given app icon png file into the different sizes Xcode needs for iOS projects in pure Swift, with no special dependencies on external tools. It also generates the required folder structure and json files.
+
+Minimum iOS Version supported is iOS 10.0
 
 # Installation
 
