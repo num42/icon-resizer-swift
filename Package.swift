@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "AppIconResizer",
     products: [
-      .executable(name: "icon-resizer", targets: ["AppIconResizer"]),
+      .executable(name: "icon-resizer-swift", targets: ["AppIconResizer"]),
     ],
     dependencies: [
         .package(
