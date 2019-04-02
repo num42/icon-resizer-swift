@@ -51,7 +51,7 @@ public final class AppIconResizer {
             try self?.render(idioms: idioms, inputFileURL: inputFileURL, targetPath: targetPath, badgeFileURL: badgeFileURL)
         }
         
-        // Strange way to make commander show the help
+        // Strange way to make command show the help
         if arguments.count <= 1 {
             do {
                 try resizingCommand.run(["--help"])
