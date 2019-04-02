@@ -77,7 +77,7 @@ public final class AppIconResizer {
         // Write app icon entries to contents json
         let info = Info(version: 1, author: "AppIconResizer")
         let outerContents = AppIconSetContents(iconEntries: nil, info: info)
-        let contents = AppIconSetContents(iconEntries: appIconEntries, info: info)
+        let contents = AppIconSetContents(iconEntries: appIconEntries.sorted(), info: info)
         do {
             let jsonData = try JSONEncoder().encode(contents)
             let jsonInfoData = try JSONEncoder().encode(outerContents)

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AppIconResizer::AppIconResizerCore"
-               BuildableName = "AppIconResizerCore.framework"
-               BlueprintName = "AppIconResizerCore"
+               BlueprintIdentifier = "AppIconResizer::AppIconResizer"
+               BuildableName = "AppIconResizer"
+               BlueprintName = "AppIconResizer"
                ReferencedContainer = "container:AppIconResizer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AppIconResizer::AppIconResizer"
-               BuildableName = "AppIconResizer"
-               BlueprintName = "AppIconResizer"
+               BlueprintIdentifier = "AppIconResizer::AppIconResizerCore"
+               BuildableName = "AppIconResizerCore.framework"
+               BlueprintName = "AppIconResizerCore"
                ReferencedContainer = "container:AppIconResizer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -69,9 +69,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AppIconResizer::AppIconResizerCore"
-            BuildableName = "AppIconResizerCore.framework"
-            BlueprintName = "AppIconResizerCore"
+            BlueprintIdentifier = "AppIconResizer::AppIconResizer"
+            BuildableName = "AppIconResizer"
+            BlueprintName = "AppIconResizer"
             ReferencedContainer = "container:AppIconResizer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

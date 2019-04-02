@@ -38,8 +38,7 @@ public enum Idiom: String, CaseIterable {
     }
     
     var appIconEntries: [AppIconEntry] {
-        return Array(virtualDevices.map { $0.appIconEntries }.joined())
-        
+        return Array(virtualDevices.map { $0.appIconEntries }.joined()).sorted()
     }    
     
 }
