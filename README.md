@@ -46,3 +46,8 @@ Options:
     --badge - Use this if you want a badge rendered on top of your app icon. Just give the path to the badge PNG.
     --targetPath [default: /Users/admin/dev/Apps/template-app-beta-ios] - The path that the xcassets folder structure and app icons will be written to. If no path is given by the user, icons are written into the current path.
 ```
+
+## Related tools
+
+  - [jkmathew/Assetizer](https://github.com/jkmathew/Assetizer) - Creates Assets from raster images
+-  [LinusU/RasterizeXCAssets](https://github.com/LinusU/RasterizeXCAssets) - Create AppIcons & Assets from SVGs
