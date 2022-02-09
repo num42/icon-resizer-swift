@@ -1,5 +1,4 @@
-// swift-tools-version:4.2
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.0
 
 import PackageDescription
 
@@ -26,4 +25,5 @@ let package = Package(
             name: "AppIconResizerTests",
             dependencies: ["AppIconResizer", "Commander"]),
     ]
+  platforms: [.macOS(.v10_13)],
 )
