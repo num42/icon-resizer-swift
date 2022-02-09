@@ -148,7 +148,7 @@ public final class AppIconResizer {
       kCGImageDestinationBackgroundColor: bgColor as Any
     ]
 
-    sizes.forEach { width in
+    sizes.parallelForEach { width in
       let size = CGSize(width: width, height: width)
 
       guard let image = inputImage.cgImage?.resize(to: size, badgedBy: badgeImage?.cgImage) else {
