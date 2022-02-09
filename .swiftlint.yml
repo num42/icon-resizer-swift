@@ -48,11 +48,8 @@ line_length: 140
 nesting:
   type_level:
     warning: 3
-  statement_level:
+  function_level:
     warning: 10
-
-force_try: warning
-force_cast: warning
 
 object_literal:
   color_literal: false

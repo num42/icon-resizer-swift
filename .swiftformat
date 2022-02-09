@@ -7,6 +7,5 @@
 --indent 2
 --octalgrouping none
 --patternlet inline
---stripunusedargs closure-only
 --wraparguments beforefirst
 --wrapcollections beforefirst
