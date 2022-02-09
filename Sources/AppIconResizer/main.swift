@@ -2,7 +2,7 @@ import AppIconResizerCore
 let tool = AppIconResizer()
 
 do {
-    try tool.run()
+  try tool.run()
 } catch {
-    print("Error occured: \(error)")
+  print("Error occurred: \(error)")
 }
