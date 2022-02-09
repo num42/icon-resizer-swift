@@ -10,7 +10,6 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/kylef/Commander.git",
-            from: "0.8.0"
         ),
     ],
     targets: [
@@ -26,4 +25,5 @@ let package = Package(
             dependencies: ["AppIconResizer", "Commander"]),
     ]
   platforms: [.macOS(.v10_13)],
+      from: "0.9.1"
 )
