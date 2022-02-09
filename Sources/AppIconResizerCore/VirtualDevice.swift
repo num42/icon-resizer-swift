@@ -40,7 +40,7 @@ public enum VirtualDevice {
   // https://github.com/KrauseFx/fastlane-plugin-appicon/blob/master/lib/fastlane/plugin/appicon/actions/appicon_action.rb
 
   // Gives back app icon entries
-  var appIconEntries: [AppIconEntry] {
+  func appIconEntries(withPrefix prefixString: String) -> [AppIconEntry] {
     let sizes: [CGFloat]
     switch self {
     case .iPhone2x, .iPhone3x:
@@ -57,7 +57,7 @@ public enum VirtualDevice {
       sizes = [1024]
     }
     let appIconEntries = sizes
-      .map { AppIconEntry(size: $0, idiom: idiom.stringRepresentation, scale: scale) }
+      .map { AppIconEntry(prefixString: prefixString, size: $0, idiom: idiom.stringRepresentation, scale: scale) }
     return appIconEntries
   }
 }

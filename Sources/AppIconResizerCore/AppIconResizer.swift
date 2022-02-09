@@ -38,11 +38,18 @@ public final class AppIconResizer {
         If no path is given by the user, icons are written into the current path.
         """
       ),
+      Option<String>(
+        "prefix",
+        default: "Appicon-",
+        description: """
+        Use this if you want to change the name of the generated icon files.
+        """
+      ),
       Argument<String>(
         "inputPath",
         description: "The path of your input app icon."
       )
-    ) { [weak self] idiomsString, badgeFilePath, targetPath, filePath in
+    ) { [weak self] idiomsString, badgeFilePath, targetPath, prefixString, filePath in
       let idioms = idiomsString.components(separatedBy: ",")
         .map { idiomString -> Idiom in
           guard let idiom = Idiom(rawValue: idiomString.lowercased()) else {
@@ -71,7 +78,13 @@ public final class AppIconResizer {
         inputFileURL = URL(fileURLWithPath: filePath, relativeTo: currentDirectoryURL)
       }
 
-      try self?.render(idioms: idioms, inputFileURL: inputFileURL, targetPath: targetPath, badgeFileURL: badgeFileURL)
+      try self?.render(
+        idioms: idioms,
+        inputFileURL: inputFileURL,
+        targetPath: targetPath,
+        badgeFileURL: badgeFileURL,
+        prefixString: prefixString
+      )
     }
 
     // Strange way to make command show the help
@@ -86,7 +99,7 @@ public final class AppIconResizer {
     }
   }
 
-  public func render(idioms: [Idiom], inputFileURL: URL, targetPath: String, badgeFileURL: URL?) throws {
+  public func render(idioms: [Idiom], inputFileURL: URL, targetPath: String, badgeFileURL: URL?, prefixString: String) throws {
     let fileManager = FileManager.default
 
     let targetURL = URL(fileURLWithPath: targetPath)
@@ -102,15 +115,15 @@ public final class AppIconResizer {
     }
 
     // Get app icon entries
-    let appIconEntriesWithDuplicates = idioms.flatMap(\.appIconEntries)
+    let appIconEntriesWithDuplicates = idioms.flatMap { $0.appIconEntries(withPrefix: prefixString) }
     let appIconEntries = Array(Set<AppIconEntry>(appIconEntriesWithDuplicates))
 
     // Write app icon entries to contents json
     let info = Info(version: 1, author: "AppIconResizer")
     let outerContents = AppIconSetContents(iconEntries: nil, info: info)
     let contents = AppIconSetContents(iconEntries: appIconEntries.sorted(), info: info)
-    
-      do {
+
+    do {
       let jsonData = try JSONEncoder().encode(contents)
       let jsonInfoData = try JSONEncoder().encode(outerContents)
       let jsonString = jsonData.prettyPrintedJSONString
@@ -156,9 +169,14 @@ public final class AppIconResizer {
         return
       }
 
-      let targetImageFileURL = URL(fileURLWithPath: "AppIcon-\(Int(size.height))x\(Int(size.width)).png", relativeTo: iconSetURL)
+      let targetImageFileURL = URL(fileURLWithPath: "\(prefixString)\(Int(size.height))x\(Int(size.width)).png", relativeTo: iconSetURL)
 
-      guard let destination = CGImageDestinationCreateWithURL(URL(fileURLWithPath: targetImageFileURL.path) as CFURL, kUTTypePNG, 1, nil) else {
+      guard let destination = CGImageDestinationCreateWithURL(
+        URL(fileURLWithPath: targetImageFileURL.path) as CFURL,
+        kUTTypePNG,
+        1,
+        nil
+      ) else {
         print("Error: Image couldn't be written in current directory")
         return
       }

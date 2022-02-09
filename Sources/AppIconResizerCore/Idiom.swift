@@ -37,7 +37,7 @@ public enum Idiom: String, CaseIterable {
     }
   }
 
-  var appIconEntries: [AppIconEntry] {
-    Array(virtualDevices.map(\.appIconEntries).joined()).sorted()
+  func appIconEntries(withPrefix prefixString: String = "AppIcon-") -> [AppIconEntry] {
+    Array(virtualDevices.map { $0.appIconEntries(withPrefix: prefixString) }.joined()).sorted()
   }
 }

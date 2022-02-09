@@ -13,6 +13,7 @@ struct AppIconEntry: Encodable, Hashable, Comparable {
     return lhs.size < rhs.size
   }
 
+  let prefixString: String
   let size: CGFloat
   let idiom: String
   let scale: Int
@@ -21,8 +22,8 @@ struct AppIconEntry: Encodable, Hashable, Comparable {
     size * CGFloat(scale)
   }
 
-  var fileName: String {
-    "AppIcon-\(Int(scaledSize))x\(Int(scaledSize)).png"
+  func fileName(for prefix: String) -> String {
+    "\(prefix)\(Int(scaledSize))x\(Int(scaledSize)).png"
   }
 
   private enum CodingKeys: String, CodingKey {
@@ -36,12 +37,24 @@ struct AppIconEntry: Encodable, Hashable, Comparable {
     Double(size).withDecimals(1).replacingOccurrences(of: ".0", with: "")
   }
 
+  init(
+    prefixString: String = "AppIcon-",
+    size: CGFloat,
+    idiom: String,
+    scale: Int
+  ) {
+    self.prefixString = prefixString
+    self.size = size
+    self.idiom = idiom
+    self.scale = scale
+  }
+
   func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     try container.encode("\(displaySize)x\(displaySize)", forKey: .size)
     try container.encode("\(scale)x", forKey: .scale)
     try container.encode(idiom, forKey: .idiom)
-    try container.encode(fileName, forKey: .fileName)
+    try container.encode(fileName(for: prefixString), forKey: .fileName)
   }
 }
 
