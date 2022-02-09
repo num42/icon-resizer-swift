@@ -40,7 +40,7 @@ public final class AppIconResizer {
       ),
       Option<String>(
         "prefix",
-        default: "Appicon-",
+        default: "AppIcon-",
         description: """
         Use this if you want to change the name of the generated icon files.
         """
