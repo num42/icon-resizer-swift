@@ -5,10 +5,10 @@ import class Foundation.Bundle
 final class AppIconResizerTests: XCTestCase {
     
     func testDeviceSizes() {
-        XCTAssert( Idiom.all.appIconEntries == Idiom.all.appIconEntries )
+        XCTAssert( Idiom.all.appIconEntries() == Idiom.all.appIconEntries())
         
         XCTAssert(
-            Idiom.iphone.appIconEntries == [
+            Idiom.iphone.appIconEntries() == [
                 AppIconEntry(
                     size : 20.0,
                     idiom : "iphone",
@@ -45,7 +45,7 @@ final class AppIconResizerTests: XCTestCase {
         )
         
         XCTAssert(
-            Idiom.ipad.appIconEntries == [
+            Idiom.ipad.appIconEntries() == [
                 AppIconEntry(
                     size : 20.0,
                     idiom : "ipad",
@@ -86,7 +86,7 @@ final class AppIconResizerTests: XCTestCase {
         )
         
         XCTAssert(
-            Idiom.watch.appIconEntries == [
+            Idiom.watch.appIconEntries() == [
                 AppIconEntry(
                     size : 24.0,
                     idiom : "watch",

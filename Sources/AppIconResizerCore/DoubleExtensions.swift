@@ -1,7 +1,7 @@
 import Foundation
 
 extension Double {
-    func withDecimals(_ decimals: Int) -> String {
-        return String(format: "%.\(decimals)f", self)
-    }
+  func withDecimals(_ decimals: Int) -> String {
+    String(format: "%.\(decimals)f", self)
+  }
 }

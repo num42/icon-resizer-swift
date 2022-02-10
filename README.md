@@ -34,9 +34,9 @@ Just run the tool to get all available options:
 
 ```shell
 > mint run icon-resizer-swift icon-resizer-swift
-🌱  Using num42/icon-resizer-swift 0.5.0 from Mintfile.
-🌱  icon-resizer-swift 0.5.0 already installed
-🌱  Running icon-resizer-swift 0.5.0...
+🌱  Using num42/icon-resizer-swift 1.0.0 from Mintfile.
+🌱  icon-resizer-swift 1.0.0 already installed
+🌱  Running icon-resizer-swift 1.0.0...
 Arguments:
 
     inputPath - The path of your input app icon.
@@ -49,5 +49,5 @@ Options:
 
 ## Related tools
 
-  - [jkmathew/Assetizer](https://github.com/jkmathew/Assetizer) - Creates Assets from raster images
--  [LinusU/RasterizeXCAssets](https://github.com/LinusU/RasterizeXCAssets) - Create AppIcons & Assets from SVGs
+- [jkmathew/Assetizer](https://github.com/jkmathew/Assetizer) - Creates Assets from raster images
+- [LinusU/RasterizeXCAssets](https://github.com/LinusU/RasterizeXCAssets) - Create AppIcons & Assets from SVGs

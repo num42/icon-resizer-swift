@@ -1,5 +1,5 @@
-krzysztofzablocki/Sourcery@0.15.0
-realm/SwiftLint@0.30.1
-yonaskolb/XcodeGen@2.2.0
-nicklockwood/SwiftFormat@0.37.5
-SwiftGen/SwiftGen@6.1.0
+# A tool to enforce Swift style and conventions.
+realm/SwiftLint@0.46.2
+
+# A command-line tool and Xcode Extension for formatting Swift code
+nicklockwood/SwiftFormat@0.49.4
