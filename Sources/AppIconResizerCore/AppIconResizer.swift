@@ -162,11 +162,12 @@ public final class AppIconResizer {
     ]
 
     let cgImage = inputImage.cgImage
+    let badgeCGImage = badgeImage?.cgImage
       
     sizes.parallelForEach { width in
       let size = CGSize(width: width, height: width)
 
-      guard let image = cgImage?.resize(to: size, badgedBy: badgeImage?.cgImage) else {
+      guard let image = cgImage?.resize(to: size, badgedBy: badgeCGImage) else {
         print("Error: Input image couldn't be resized")
         return
       }
