@@ -161,10 +161,12 @@ public final class AppIconResizer {
       kCGImageDestinationBackgroundColor: bgColor as Any
     ]
 
+    let cgImage = inputImage.cgImage
+      
     sizes.parallelForEach { width in
       let size = CGSize(width: width, height: width)
 
-      guard let image = inputImage.cgImage?.resize(to: size, badgedBy: badgeImage?.cgImage) else {
+      guard let image = cgImage?.resize(to: size, badgedBy: badgeImage?.cgImage) else {
         print("Error: Input image couldn't be resized")
         return
       }
