@@ -1,3 +1,7 @@
+# ⚠️ NOTICE ⚠️ 
+
+This project is no longer maintained, as Xcode 14.0 finally has functionality that does most of the things this tool can do, see https://www.avanderlee.com/xcode/replacing-app-icon-generators/
+
 # AppIconResizer
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
